@@ -1,0 +1,7 @@
+CREATE TABLE `wonderfull_travel`.`usuarios` (`id` INT NOT NULL AUTO_INCREMENT , `nombre` TEXT NOT NULL , `apellido` TEXT NOT NULL , `telefono` INT(9) NOT NULL , `email` TEXT NOT NULL , `genero` ENUM('Masculí','Femení','Privat') NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB; 
+
+CREATE TABLE `wonderfull_travel`.`continents` (`id` INT NOT NULL AUTO_INCREMENT , `nombre` TEXT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB; 
+
+CREATE TABLE `wonderfull_travel`.`paisos` (`id` INT NOT NULL AUTO_INCREMENT , `nombre` TEXT NOT NULL , `continent_id` INT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB; 
+
+CREATE TABLE `wonderfull_travel`.`viatges` (`id` INT NOT NULL AUTO_INCREMENT , `destí` TEXT NOT NULL , `preu_total` DECIMAL NOT NULL , `num_persones` INT NOT NULL , `data` DATE NOT NULL , `pais` TEXT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB; 
