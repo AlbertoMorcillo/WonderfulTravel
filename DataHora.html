@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ca">
+	<head>
+		<title>Data i hora</title>
+		<meta charset="UTF-8" />
+
+		<style>
+			body{font-family:Arial,Helvetica,sans-serif;}
+			div.datahora{font-size:1.2em; font-weight:bold; color:white; text-align:center; border-radius:0.9em; background-image:linear-gradient(#cebe27, #45ab76); width:9em; padding:0.4em 0;}
+			iframe{border:1px solid black; width:1000px; height: 500px;}
+		</style>
+		
+		<script defer src="DataHora.js"></script>
+
+		<script>
+			function _aniversari() {
+				let r = aniversari(document.getElementById('naixement').value, document.getElementById('data2').value);
+				if (r != undefined) document.getElementById("aniversari").innerHTML = r;
+			}
+		</script>
+
+	</head>
+
+	<body onload="init()">
+		<div id="data" class="datahora"></div><br><br>
+		Introdueix les dates en format <strong>DD-MM-AAAA</strong><br>
+		Si la segona data es deixa en blanc, equival a la data actual.<br>
+		Data naixement <input style="margin-top:4px;margin-bottom:4px;" type="text" id="naixement"><br>
+		Segona data &nbsp; &nbsp; &nbsp;<input style="margin-top:4px;margin-bottom:4px;" type="text" id="data2"><br>
+		<button style="width:6em" onclick="_aniversari()">Aniversari</button><br><br>
+		<div id="aniversari" style="width:20em"></div>
+	</body>
+</html>
