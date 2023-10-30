@@ -8,27 +8,41 @@
 			div.datahora{font-size:1.2em; font-weight:bold; color:white; text-align:center; border-radius:0.9em; background-image:linear-gradient(#cebe27, #45ab76); width:9em; padding:0.4em 0;}
 			iframe{border:1px solid black; width:1000px; height: 500px;}
 		</style>
+		    <link rel="stylesheet" href="estils.css"> <!-- Hacer referencia a tu archivo de estilos -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script defer src="DataHora.js"></script>
 	</head>
-	<body onload="init()">
-		<form>
+	<body>
+		<form method="post" action="php">
 		<div id="data" class="datahora"></div><br><br>
 		Data <input type="date" id="datahora" name="datahora" ><br>
-		Desti <select>
-			<option value= "5">5</option>
-			<option value= "5">5</option>
-			<option value= "5">5</option>
-			<option value= "5">5</option>
-		</select>
-		 <select>
-			<option value= "5">5</option>
-			<option value= "5">5</option>
-			<option value= "5">5</option>
-			<option value= "5">5</option>
-		</select><br>
+		Desti 		
+		<select class="form-control" id="choice1">
+			<option value="ASIA">ASIA</option>
+			<option value="EUROPA">EUROPA</option>
+			<option value="ÀFRICA" >ÀFRICA</option>
+			<option value="AMÈRICA">AMÈRICA</option>
+		   </select>
+		   
+		   <select class="form-control" id="choice2">
+			 <option data-option="ASIA"    value="Afganistán">Afganistán</option>
+			 <option data-option="ASIA"    value="Japón">Japón</option>
+			 <option data-option="ASIA"    value="Yemen">Yemen</option>
+			 <option data-option="EUROPA"   value="España">España</option>
+			 <option data-option="EUROPA"   value="Portugal">Portugal</option>
+			 <option data-option="EUROPA"    value="Luxemburgo">Luxemburgo</option>
+			 <option data-option="ÀFRICA"    value="Uganda">Uganda</option>
+			 <option data-option="ÀFRICA"   value="Sierra Leona">Sierra Leona</option>
+			 <option data-option="ÀFRICA"    value="Marruecos">Marruecos</option>
+			 <option data-option="AMÈRICA"   value="México">México</option>
+			 <option data-option="AMÈRICA"    value="Brasil">Brasil</option>
+			 <option data-option="AMÈRICA"   value="Argentina">Argentina</option>
+		   </select><br>
 		Nom <input type="text" id="nom" name="nom" ><br>
 		Apellidos <input type="text" id="cognoms" name="cognoms" ><br>
 		Email <input type="text" id="email" name="email" ><br>
+		
+		Preu <input type="text" id="preu" name="preu" readonly ><br>
 
 		Genere <br><input type="radio" id="genere" name="genere" value="HTML">
 		<label for="html">Masculí</label><br>
@@ -41,7 +55,8 @@
 		Persones <input type="text" id="persones" name="persones" ><br>
 		Descompte <input type="checkbox" id="descompte" name="descompte" ><br>
 		<input type="submit" value="Enviar">
-	
+
+
 	</form>	
 	</body>
 </html>
