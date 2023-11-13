@@ -21,11 +21,11 @@ function validarApellidoOk($validApellido, &$errors){
 }
 
 function validarEmailOk($validEmail, &$errors){
-    if (empty($email)) {
+    if (empty($validEmail)) {
         $errors .= 'El correo electrónico está vacío.</br>';
     }
     else {
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        if (!filter_var($validEmail, FILTER_VALIDATE_EMAIL)) {
             $errors .= 'Correo electrónico no válido.</br>';
         }
     }
@@ -44,6 +44,12 @@ function validarGeneroOk($validGenero, &$errors){
     if (empty($validGenero)){
         $errors .= 'El género no puede estar vacío.<br>';
     }
+}
+
+function validadNumPersonas($validPersonas, &$errors){
+    if (empty($validPersonas)){
+        return $validPersonas = 1;
+    } 
 }
 
 

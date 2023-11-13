@@ -41,5 +41,5 @@ validarGeneroOk($validGenero, $errors);
 
 }
 
-include '../vista/index_view.php';
+
 ?>
