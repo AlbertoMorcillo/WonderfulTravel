@@ -44,16 +44,15 @@
 		
 		Preu <input type="text" id="preu" name="preu" readonly ><br>
 
-		Genere <br><input type="radio" id="genere" name="genere" value="HTML">
-		<label for="html">Masculí</label><br>
-		<input type="radio" id="genere" name="genere" value="CSS">
-		<label for="css">Femení</label><br>
-		<input type="radio" id="genere" name="genere" value="JavaScript">
-		<label for="javascript">Privat</label><br>
+		Genere <br><input type="radio" id="genere" name="genere" value="masculi">
+		<label for="masculi">Masculí</label><br>
+		<input type="radio" id="genere" name="genere" value="femeni">
+		<label for="femeni">Femení</label><br>
+		<input type="radio" id="genere" name="genere" value="privat">
+		<label for="privat">Privat</label><br>
 
 		Telèfon <input type="text" id="telefon" name="telefon" value="<?php if(isset($_POST['telefon']) && !(empty($errors))) { echo($_POST['telefon']);} ?>"><br>
-		<label for="persones">Persones (10-100):</label>
-		Persones <input type="number" id="persones" name="persones" min="1" max="100" value="<?php if(isset($_POST['persones']) && !(empty($errors))) { echo($_POST['persones']);} ?>"><br>
+		Persones <input type="number" id="persones" name="persones" min="1" max="100"><br>
 		Descompte <input type="checkbox" id="descompte" name="descompte" value="<?php if(isset($_POST['descompte']) && !(empty($errors))) { echo($_POST['descompte']);} ?>"><br>
         <span class="error">
 		<?php if (isset($errors) && !empty($errors)) : ?>
