@@ -52,7 +52,7 @@
 		<label for="privat">Privat</label><br>
 
 		Telèfon <input type="text" id="telefon" name="telefon" value="<?php if(isset($_POST['telefon']) && !(empty($errors))) { echo($_POST['telefon']);} ?>"><br>
-		Persones <input type="number" id="persones" name="persones" min="1" max="100"><br>
+		Persones <input type="number" id="persones" name="persones" min="1" max="100" value="<?php if(isset($_POST['persones']) && !(empty($errors))) { echo($_POST['persones']);} ?>"><br>
 		Descompte <input type="checkbox" id="descompte" name="descompte" value="<?php if(isset($_POST['descompte']) && !(empty($errors))) { echo($_POST['descompte']);} ?>"><br>
         <span class="error">
 		<?php if (isset($errors) && !empty($errors)) : ?>
