@@ -2,11 +2,11 @@
 
 function validarNombreOk($validNombre, &$errors){
     if (empty($validNombre)) {
-        $errors .= "El nombre está vacío.</br>";
+         $errors .= "El nombre está vacío.</br>";
     }
      // Verificar si el nombre contiene caracteres válidos
      if (!preg_match("/^([a-zA-Z']+)$/", $validNombre)) {
-        $errors .= "Nombre no válido. Solo se permiten letras y apóstrofos.</br>";
+     $errors .= "Nombre no válido. Solo se permiten letras y apóstrofos.</br>";
     }
 }
 

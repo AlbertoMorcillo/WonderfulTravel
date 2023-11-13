@@ -28,12 +28,13 @@ $validPersonas = isset($_POST['persones']) ? htmlspecialchars($_POST['persones']
 $validDescuento = isset($_POST['descompte']) ? htmlspecialchars($_POST['descompte']) : '';
 $validPreu = isset($_POST['preu']) ? htmlspecialchars($_POST['preu']) : '';
 
-require_once '../modelo/conection.php';
+require 'Validaciones.php';
 
 validarNombreOk($validNombre, $errors);
 validarApellidoOk($validApellido, $errors);
 validarEmailOk($validEmail, $errors);
 validarTelfOk($validTelf, $errors);
 validarGeneroOk($validGenero, $errors);
+
 include '../vista/index_view.php';
 ?>
