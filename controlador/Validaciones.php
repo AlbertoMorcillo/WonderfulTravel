@@ -1,6 +1,6 @@
 <?php
 
-function validarNombreOk($validNombre, $errors){
+function validarNombreOk($validNombre, &$errors){
     if (empty($validNombre)) {
         $errors .= "El nombre está vacío.</br>";
     }
@@ -10,7 +10,7 @@ function validarNombreOk($validNombre, $errors){
     }
 }
 
-function validarApellidoOk($validApellido, $errors){
+function validarApellidoOk($validApellido, &$errors){
     if (empty($validApellido)) {
         $errors .= "El apellido está vacío.</br>";
     }
@@ -20,7 +20,7 @@ function validarApellidoOk($validApellido, $errors){
     }
 }
 
-function validarEmailOk($validEmail, $errors){
+function validarEmailOk($validEmail, &$errors){
     if (empty($email)) {
         $errors .= 'El correo electrónico está vacío.</br>';
     }
@@ -31,7 +31,7 @@ function validarEmailOk($validEmail, $errors){
     }
 }
 
-function validarTelfOk($validTelf, $errors){
+function validarTelfOk($validTelf, &$errors){
     if (empty($validTelf)){
         $errors .= 'El teléfono no puede estar vacío.<br>';
     }
@@ -40,7 +40,7 @@ function validarTelfOk($validTelf, $errors){
     }
 }
 
-function validarGeneroOk($validGenero, $errors){
+function validarGeneroOk($validGenero, &$errors){
     if (empty($validGenero)){
         $errors .= 'El género no puede estar vacío.<br>';
     }
