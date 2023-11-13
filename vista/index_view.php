@@ -8,7 +8,7 @@
 			div.datahora{font-size:1.2em; font-weight:bold; color:white; text-align:center; border-radius:0.9em; background-image:linear-gradient(#cebe27, #45ab76); width:9em; padding:0.4em 0;}
 			iframe{border:1px solid black; width:1000px; height: 500px;}
 		</style>
-		    <link rel="stylesheet" href="estils.css"> <!-- Hacer referencia a tu archivo de estilos -->
+		    <link rel="stylesheet" href="../estilos/style.css"> <!-- Hacer referencia a tu archivo de estilos -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script defer src="DataHora.js"></script>
 	</head>
@@ -55,9 +55,11 @@
 		Persones <input type="text" id="persones" name="persones" value="<?php if(isset($_POST['persones']) && !(empty($errors))) { echo($_POST['persones']);} ?>"><br>
 		Descompte <input type="checkbox" id="descompte" name="descompte" value="<?php if(isset($_POST['descompte']) && !(empty($errors))) { echo($_POST['descompte']);} ?>"><br>
         <span class="error">
-		<?php if(!isset($errors)){
-		$errors;
-	        }else{echo $errors;}?>
+		<?php if (isset($errors) && !empty($errors)) : ?>
+        <div class="error-message">
+            <?php echo $errors ?>
+        </div>
+        <?php endif; ?>
 	</span> 
 		
 	<button type="submit" name="submit" value="Enviar">Enviar</button>
