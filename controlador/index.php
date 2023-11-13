@@ -38,6 +38,25 @@ validarEmailOk($validEmail, $errors);
 validarTelfOk($validTelf, $errors);
 validarGeneroOk($validGenero, $errors);
 
+if (empty($errors)){
+	try {
+		// Establecer la conexión a la base de datos
+		$connexio = new PDO('mysql:host=localhost;dbname=wonderfull_travel', 'root', '');
+		$statement = $connexio->prepare("INSERT INTO usuarios (nombre, apellido, telefono, email, genero) VALUES (?,?,?,?,?)");
+		$statement->bindParam(1,$validNombre);
+		$statement->bindParam(2,$validApellido);
+		$statement->bindParam(3,$validTelf);
+		$statement->bindParam(4,$validEmail);
+		$statement->bindParam(5,$validGenero);
+		$statement->execute();
+		// Establecer el modo de errores para PDO
+		$connexio->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	} catch(PDOException $e) {
+		// Manejar errores de conexión
+		echo "Error de conexión a la base de datos: " . $e->getMessage();
+		die();
+	}
+	}
 
 }
 
