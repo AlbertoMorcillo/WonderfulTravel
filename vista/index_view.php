@@ -60,7 +60,7 @@
 	        }else{echo $errors;}?>
 	</span> 
 		
-		<input type="submit" value="Enviar">
+	<button type="submit" name="submit" value="Enviar">Enviar</button>
 
 
 	</form>	
