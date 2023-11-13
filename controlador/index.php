@@ -17,8 +17,8 @@
 
 $errors = '';
 
-$validChoice1 = isset($_POST['choice1']) ? htmlspecialchars($_POST['coice1']) : '';
-$validChoice2 = isset($_POST['choice2']) ? htmlspecialchars($_POST['choice2']) : '';
+$validChoice1 = isset($_POST['choice1']) ? htmlspecialchars($_POST['choice1']) : '';
+$validChoice2 = isset($_POST['choice2']) ? htmlspecialchars($_POST['choice2']) : 'asajnsanskj';
 $validNombre = isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : '';
 $validApellido = isset($_POST['cognoms']) ? htmlspecialchars($_POST['cognoms']) : '';
 $validEmail = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '';
@@ -26,7 +26,8 @@ $validTelf = isset($_POST['telefon']) ? htmlspecialchars($_POST['telefon']) : ''
 $validGenero = isset($_POST['genere']) ? htmlspecialchars($_POST['genere']) : '';
 $validPersonas = isset($_POST['persones']) ? htmlspecialchars($_POST['persones']) : 1;
 $validDescuento = isset($_POST['descompte']) ? htmlspecialchars($_POST['descompte']) : '';
-$validPreu = isset($_POST['preu']) ? htmlspecialchars($_POST['preu']) : '';
+// Mostrar precio al poner el validChoice2 = $preu
+// Comparar data esrita a la de hoy para sacar las noches que se quedan
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
@@ -37,8 +38,9 @@ validarApellidoOk($validApellido, $errors);
 validarEmailOk($validEmail, $errors);
 validarTelfOk($validTelf, $errors);
 validarGeneroOk($validGenero, $errors);
-
-if (empty($errors)){
+echo $validChoice1;
+echo $validChoice2;
+/**if (empty($errors)){
 	try {
 		// Establecer la conexión a la base de datos
 		$connexio = new PDO('mysql:host=localhost;dbname=wonderfull_travel', 'root', '');
@@ -56,7 +58,41 @@ if (empty($errors)){
 		echo "Error de conexión a la base de datos: " . $e->getMessage();
 		die();
 	}
-	}
+	}*/
+	if (empty($errors)){
+		try {
+			$preu = 1;
+			$data = 2;
+			// Establecer la conexión a la base de datos
+
+			$connexio = new PDO('mysql:host=localhost;dbname=wonderfull_travel', 'root', '');
+			$statement = $connexio->prepare("SELECT preu FROM paisos WHERE nombre = ?");
+			$statement->bindParam(1,$validChoice2);
+			$statement->execute();
+			while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+				$preu = $row["preu"];
+			}
+			
+			$preu = ($preu * $validPersonas) * $data;
+			$statement = $connexio->prepare("INSERT INTO viatges (destí, preu_total, num_persones, data, pais) VALUES (?,?,?,?,?)");
+			$statement->bindParam(1,$validChoice1);
+			$statement->bindParam(2,$preu);
+			$statement->bindParam(3,$validPersonas);
+			$statement->bindParam(4,$data);
+			$statement->bindParam(5,$validChoice2);
+			$statement->execute();
+			echo $validChoice1;
+			echo $validPersonas;
+			echo $data;
+			echo $validChoice2;
+			// Establecer el modo de errores para PDO
+			$connexio->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		} catch(PDOException $e) {
+			// Manejar errores de conexión
+			echo "Error de conexión a la base de datos: " . $e->getMessage();
+			die();
+		}
+		}
 
 }
 

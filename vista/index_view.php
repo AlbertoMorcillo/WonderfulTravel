@@ -17,14 +17,14 @@
 		<div id="data" class="datahora"></div><br><br>
 		Data <input type="date" id="datahora" name="datahora" ><br>
 		Desti 		
-		<select class="form-control" id="choice1">
+		<select class="form-control" id="choice1" name="choice1">
 			<option value="ASIA">ASIA</option>
 			<option value="EUROPA">EUROPA</option>
 			<option value="ÀFRICA" >ÀFRICA</option>
 			<option value="AMÈRICA">AMÈRICA</option>
 		   </select>
 		   
-		   <select class="form-control" id="choice2">
+		   <select class="form-control" id="choice2" name ="choice2">
 			 <option data-option="ASIA"    value="Afganistán">Afganistán</option>
 			 <option data-option="ASIA"    value="Japón">Japón</option>
 			 <option data-option="ASIA"    value="Yemen">Yemen</option>
