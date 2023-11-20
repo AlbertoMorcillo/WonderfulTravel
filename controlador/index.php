@@ -88,34 +88,32 @@ validarGeneroOk($validGenero, $errors);
 			$statement->bindParam(5,$validChoice2);
 			$statement->execute();
 
-			$_SESSION['viajes'][] = array(
-				'Destino' => $validChoice1,
-				'Precio total' => $preu,
-				'Número de personas' => $validPersonas,
-				'Fecha' => $data,
-				'País' => $validChoice2
-			);
 		
-			// Mostrar la información del viaje actual
-			echo "Destino: " . $validChoice1 . "<br>";
-			echo "Precio total: " . $preu . "<br>";
-			echo "Número de personas: " . $validPersonas . "<br>";
-			echo "Fecha: " . $data . "<br>";
-			echo "País: " . $validChoice2 . "<br>";
-			echo "<br>";
-		
-			// Mostrar la información de viajes anteriores almacenada en la sesión
-			foreach ($_SESSION['viajes'] as $viaje) {
-				echo "Destino: " . $viaje['Destino'] . "<br>";
-				echo "Precio total: " . $viaje['Precio total'] . "<br>";
-				echo "Número de personas: " . $viaje['Número de personas'] . "<br>";
-				echo "Fecha: " . $viaje['Fecha'] . "<br>";
-				echo "País: " . $viaje['País'] . "<br>";
-				echo "<br>";
-			}
-			// Establecer el modo de errores para PDO
-			$connexio->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		} catch(PDOException $e) {
+		   
+					   // Limitar la visualización a tres registros
+					   $_SESSION['viajes'][] = array(
+						   'Destino' => $validChoice1,
+						   'Precio total' => $preu,
+						   'Número de personas' => $validPersonas,
+						   'Fecha' => $data,
+						   'País' => $validChoice2
+					   );
+		   
+					   // Mostrar la información de viajes anteriores almacenada en la sesión
+					   $totalViajes = count($_SESSION['viajes']);
+					   $inicio = $totalViajes > 3 ? $totalViajes - 3 : 0;
+		   
+					   for ($i = $inicio; $i < $totalViajes; $i++) {
+						   $viaje = $_SESSION['viajes'][$i];
+						   echo "Destino: " . $viaje['Destino'] . "<br>";
+						   echo "Precio total: " . $viaje['Precio total'] . "<br>";
+						   echo "Número de personas: " . $viaje['Número de personas'] . "<br>";
+						   echo "Fecha: " . $viaje['Fecha'] . "<br>";
+						   echo "País: " . $viaje['País'] . "<br>";
+						   echo "<br>";
+					   }
+            // Establecer el modo de errores para PDO
+            $connexio->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);		} catch(PDOException $e) {
 			// Manejar errores de conexión
 			echo "Error de conexión a la base de datos: " . $e->getMessage();
 			die();
