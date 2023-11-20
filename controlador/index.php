@@ -14,6 +14,13 @@
 </html>
 
 <?php
+// Iniciar o reanudar la sesión
+session_start();
+
+// Verificar si la sesión de viajes no está inicializada
+if (!isset($_SESSION['viajes'])) {
+    $_SESSION['viajes'] = array(); // Inicializarla como un arreglo vacío
+}
 
 $errors = '';
 
@@ -38,8 +45,6 @@ validarApellidoOk($validApellido, $errors);
 validarEmailOk($validEmail, $errors);
 validarTelfOk($validTelf, $errors);
 validarGeneroOk($validGenero, $errors);
-echo $validChoice1;
-echo $validChoice2;
 /**if (empty($errors)){
 	try {
 		// Establecer la conexión a la base de datos
@@ -59,6 +64,7 @@ echo $validChoice2;
 		die();
 	}
 	}*/
+	if (!isset($_SESSION['viaje_insertado'])) {
 	if (empty($errors)){
 		try {
 			$preu = 1;
@@ -72,7 +78,7 @@ echo $validChoice2;
 			while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
 				$preu = $row["preu"];
 			}
-			
+
 			$preu = ($preu * $validPersonas) * $data;
 			$statement = $connexio->prepare("INSERT INTO viatges (destí, preu_total, num_persones, data, pais) VALUES (?,?,?,?,?)");
 			$statement->bindParam(1,$validChoice1);
@@ -81,10 +87,32 @@ echo $validChoice2;
 			$statement->bindParam(4,$data);
 			$statement->bindParam(5,$validChoice2);
 			$statement->execute();
-			echo $validChoice1;
-			echo $validPersonas;
-			echo $data;
-			echo $validChoice2;
+
+			$_SESSION['viajes'][] = array(
+				'Destino' => $validChoice1,
+				'Precio total' => $preu,
+				'Número de personas' => $validPersonas,
+				'Fecha' => $data,
+				'País' => $validChoice2
+			);
+		
+			// Mostrar la información del viaje actual
+			echo "Destino: " . $validChoice1 . "<br>";
+			echo "Precio total: " . $preu . "<br>";
+			echo "Número de personas: " . $validPersonas . "<br>";
+			echo "Fecha: " . $data . "<br>";
+			echo "País: " . $validChoice2 . "<br>";
+			echo "<br>";
+		
+			// Mostrar la información de viajes anteriores almacenada en la sesión
+			foreach ($_SESSION['viajes'] as $viaje) {
+				echo "Destino: " . $viaje['Destino'] . "<br>";
+				echo "Precio total: " . $viaje['Precio total'] . "<br>";
+				echo "Número de personas: " . $viaje['Número de personas'] . "<br>";
+				echo "Fecha: " . $viaje['Fecha'] . "<br>";
+				echo "País: " . $viaje['País'] . "<br>";
+				echo "<br>";
+			}
 			// Establecer el modo de errores para PDO
 			$connexio->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		} catch(PDOException $e) {
@@ -95,6 +123,6 @@ echo $validChoice2;
 		}
 
 }
-
+}
 include_once '../vista/index_view.php';
 ?>
