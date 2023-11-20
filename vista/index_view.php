@@ -10,6 +10,7 @@
 		</style>
 		    <link rel="stylesheet" href="../estilos/style.css"> <!-- Hacer referencia a tu archivo de estilos -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="./calculos.js"></script>
 		<script defer src="DataHora.js"></script>
 	</head>
 	<body>
