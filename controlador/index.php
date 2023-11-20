@@ -75,18 +75,20 @@ $fecha2 = new DateTime();
 	if (empty($errors)){
 		try {
 			$preu = 1;
-
 			$dataViatge = $valor;
-			$fecha1 = new DateTime($dataViatge);
-			$fecha2 = new DateTime();
+			/**
+			 * $fecha1 = new DateTime($dataViatge);
+			*  $fecha2 = new DateTime();
 
-			$diferencia = $fecha1->diff($fecha2);
+			*  $diferencia = $fecha1->diff($fecha2);
 			
-			$data = $diferencia->format("%a");
-			if ($data == 0){
-				$data = 1;
-			}
-			echo "La diferencia en noches es: " . $data . " noches";
+			*  $data = $diferencia->format("%a");
+			*  if ($data == 0){
+			* 	 $data = 1;
+			* }
+			* echo "La diferencia en noches es: " . $data . " noches";
+			 */
+
 			// Establecer la conexión a la base de datos
 
 			$connexio = new PDO('mysql:host=localhost;dbname=wonderfull_travel', 'root', '');
@@ -97,7 +99,7 @@ $fecha2 = new DateTime();
 				$preu = $row["preu"];
 			}
 
-			$preu = ($preu * $validPersonas) * $data;
+			$preu = $preu * $validPersonas;
 			$statement = $connexio->prepare("INSERT INTO viatges (destí, preu_total, num_persones, data, pais) VALUES (?,?,?,?,?)");
 			$statement->bindParam(1,$validChoice1);
 			$statement->bindParam(2,$preu);

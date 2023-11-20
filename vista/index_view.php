@@ -19,6 +19,7 @@
 		Data <input type="date" id="datahora" name="datahora" ><br>
 		Desti 		
 		<select class="form-control" id="choice1" name="choice1">
+			<option value="defecto" selected>Sel·lecciona un continent</option>
 			<option value="ASIA">ASIA</option>
 			<option value="EUROPA">EUROPA</option>
 			<option value="ÀFRICA" >ÀFRICA</option>
@@ -26,15 +27,19 @@
 		   </select>
 		   
 		   <select class="form-control" id="choice2" name ="choice2">
+		   	 <option data-option="ASIA" 	value="defecto"selected>Sel·lecciona un país</option>
 			 <option data-option="ASIA"    value="Afganistán">Afganistán</option>
 			 <option data-option="ASIA"    value="Japón">Japón</option>
 			 <option data-option="ASIA"    value="Yemen">Yemen</option>
+			 <option data-option="EUROPA" 	value="defecto"selected>Sel·lecciona un país</option>
 			 <option data-option="EUROPA"   value="España">España</option>
 			 <option data-option="EUROPA"   value="Portugal">Portugal</option>
 			 <option data-option="EUROPA"    value="Luxemburgo">Luxemburgo</option>
+			 <option data-option="ÀFRICA" 	value="defecto"selected>Sel·lecciona un país</option>
 			 <option data-option="ÀFRICA"    value="Uganda">Uganda</option>
 			 <option data-option="ÀFRICA"   value="Sierra Leona">Sierra Leona</option>
 			 <option data-option="ÀFRICA"    value="Marruecos">Marruecos</option>
+			 <option data-option="AMÈRICA" 	value="defecto"selected>Sel·lecciona un país</option>
 			 <option data-option="AMÈRICA"   value="México">México</option>
 			 <option data-option="AMÈRICA"    value="Brasil">Brasil</option>
 			 <option data-option="AMÈRICA"   value="Argentina">Argentina</option>
