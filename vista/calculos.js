@@ -25,16 +25,19 @@ const ARGENTINA_PRECIO = 1075;
     if (descuento) {
       precioBase -= 10; // Reducción de $10 si se aplica el descuento
     }
-
-    let precioTotal = precioBase * personas;
-
+let precioTotal = 0;
+    //let precioTotal = precioBase * personas;
+    switch (pais){
+      case "España": 
+        precioTotal = ESPAÑA_PRECIO;
+    } 
     document.getElementById('preu').value = precioTotal;
   }
 
   // Event listeners para detectar cambios en los campos relevantes
   document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('choice2').addEventListener('change', calcularPrecio);
-    document.getElementById('persones').addEventListener('input', calcularPrecio);
+    //document.getElementById('persones').addEventListener('input', calcularPrecio);
     document.getElementById('descompte').addEventListener('change', calcularPrecio);
   });
 

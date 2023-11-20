@@ -46,32 +46,14 @@
 		    <link rel="stylesheet" href="../estilos/style.css"> <!-- Hacer referencia a tu archivo de estilos -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script src="./calculos.js"></script>
-		<!-- <script defer src="DataHora.js"></script>-->
-		<script  src="./script.js"></script>
+		<script defer src="DataHora.js"></script>
+
 	</head>
 	<body>
-	<div class="clock">
-  <svg class="circle" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="60" cy="60" r="60" class="outer-circle" />
-    <circle cx="60" cy="60" r="57" />
-    <line x1="60" y1="20" x2="60" y2="60" class="hours" />
-    <line x1="60" y1="2" x2="60" y2="60" class="minutes" />
-    <line x1="60" y1="0" x2="60" y2="60" class="seconds" />
-    <circle cx="60" cy="60" r="3" class="center-circle" />
-    <line x1="60" y1="5" x2="60" y2="10" class="line" />
-    <line x1="60" y1="5" x2="60" y2="10" class="line" />
-    <line x1="60" y1="5" x2="60" y2="10" class="line" />
-    <line x1="60" y1="5" x2="60" y2="10" class="line" />
-    <line x1="60" y1="5" x2="60" y2="10" class="line" />
-    <line x1="60" y1="5" x2="60" y2="10" class="line" />
-    <line x1="60" y1="5" x2="60" y2="10" class="line" />
-    <line x1="60" y1="5" x2="60" y2="10" class="line" />
-    <line x1="60" y1="5" x2="60" y2="10" class="line" />
-    <line x1="60" y1="5" x2="60" y2="10" class="line" />
-    <line x1="60" y1="5" x2="60" y2="10" class="line" />
-    <line x1="60" y1="5" x2="60" y2="10" class="line" />
-  </svg>
-</div>
+
+
+<!-- partial -->
+<script  src="./script.js"></script>
 <!-- partial -->
 		<form method="post" action="../controlador/index.php">
 

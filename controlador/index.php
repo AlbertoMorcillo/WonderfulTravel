@@ -3,14 +3,81 @@
 		<title>WONDERFULL TRAVELL</title>
 		<meta charset="UTF-8" />
 		<style>
+			.clock {
+    margin: 0px auto;
+    width: 650px;
+    height: 650px;
+    fill: black
+  }
+  .outer-circle,
+  .center-circle {
+    fill: DarkSlateGray;
+  }
+  
+  .hours,
+  .minutes,
+  .seconds {
+    transform-origin: center;
+    stroke-linecap: round;
+  }
+  
+  .hours {
+    stroke: fuchsia;
+    stroke-width: 3px; 
+    transition: transform 1s ease-in-out;
+  }
+  .minutes {
+    stroke-width: 2px; 
+    stroke: lime;
+    transition: transform 1s ease-in-out;
+  }
+  .seconds {
+    stroke: white;
+  }
+  
+  .line {
+    stroke-width: 1px;
+    stroke: white;
+    stroke-linecap: round;
+    transform-origin: center;
+  }
 			body{font-family:Arial,Helvetica,sans-serif;}
 			div.datahora{font-size:1.2em; font-weight:bold; color:white; text-align:center; border-radius:0.9em; background-image:linear-gradient(#cebe27, #45ab76); width:9em; padding:0.4em 0;}
 			iframe{border:1px solid black; width:1000px; height: 500px;}
 		</style>
 		    <link rel="stylesheet" href="estils.css"> <!-- Hacer referencia a tu archivo de estilos -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script defer src="../vista/script.js"></script>
+		<script defer src="../vista/calculos.js"></script>
 		<script defer src="../vista/DataHora.js"></script>
+
 	</head>
+	<body>
+		<!-- partial -->
+<script  src="./script.js"></script>
+	<div class="clock">
+  <svg class="circle" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="60" cy="60" r="60" class="outer-circle" />
+    <circle cx="60" cy="60" r="57" />
+    <line x1="60" y1="20" x2="60" y2="60" class="hours" />
+    <line x1="60" y1="2" x2="60" y2="60" class="minutes" />
+    <line x1="60" y1="0" x2="60" y2="60" class="seconds" />
+    <circle cx="60" cy="60" r="3" class="center-circle" />
+    <line x1="60" y1="5" x2="60" y2="10" class="line" />
+    <line x1="60" y1="5" x2="60" y2="10" class="line" />
+    <line x1="60" y1="5" x2="60" y2="10" class="line" />
+    <line x1="60" y1="5" x2="60" y2="10" class="line" />
+    <line x1="60" y1="5" x2="60" y2="10" class="line" />
+    <line x1="60" y1="5" x2="60" y2="10" class="line" />
+    <line x1="60" y1="5" x2="60" y2="10" class="line" />
+    <line x1="60" y1="5" x2="60" y2="10" class="line" />
+    <line x1="60" y1="5" x2="60" y2="10" class="line" />
+    <line x1="60" y1="5" x2="60" y2="10" class="line" />
+    <line x1="60" y1="5" x2="60" y2="10" class="line" />
+    <line x1="60" y1="5" x2="60" y2="10" class="line" />
+  </svg>
+</div>
+	</body>
 </html>
 
 <?php
@@ -142,5 +209,5 @@ $fecha2 = new DateTime();
 
 }
 }
-include_once '../vista/index_view.php';
+include '../vista/index_view.php';
 ?>
