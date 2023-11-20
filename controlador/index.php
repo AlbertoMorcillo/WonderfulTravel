@@ -23,7 +23,10 @@ if (!isset($_SESSION['viajes'])) {
 }
 
 $errors = '';
-
+$valor = '';
+if (isset($_POST["datahora"])) {
+	$valor = $_POST["datahora"];
+}
 $validChoice1 = isset($_POST['choice1']) ? htmlspecialchars($_POST['choice1']) : '';
 $validChoice2 = isset($_POST['choice2']) ? htmlspecialchars($_POST['choice2']) : 'asajnsanskj';
 $validNombre = isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : '';
@@ -45,6 +48,10 @@ validarApellidoOk($validApellido, $errors);
 validarEmailOk($validEmail, $errors);
 validarTelfOk($validTelf, $errors);
 validarGeneroOk($validGenero, $errors);
+$dataViatge = $valor;
+$fecha1 = new DateTime($dataViatge);
+$fecha2 = new DateTime();
+
 /**if (empty($errors)){
 	try {
 		// Establecer la conexión a la base de datos
@@ -68,7 +75,18 @@ validarGeneroOk($validGenero, $errors);
 	if (empty($errors)){
 		try {
 			$preu = 1;
-			$data = 2;
+
+			$dataViatge = $valor;
+			$fecha1 = new DateTime($dataViatge);
+			$fecha2 = new DateTime();
+
+			$diferencia = $fecha1->diff($fecha2);
+			
+			$data = $diferencia->format("%a");
+			if ($data == 0){
+				$data = 1;
+			}
+			echo "La diferencia en noches es: " . $data . " noches";
 			// Establecer la conexión a la base de datos
 
 			$connexio = new PDO('mysql:host=localhost;dbname=wonderfull_travel', 'root', '');
@@ -84,7 +102,7 @@ validarGeneroOk($validGenero, $errors);
 			$statement->bindParam(1,$validChoice1);
 			$statement->bindParam(2,$preu);
 			$statement->bindParam(3,$validPersonas);
-			$statement->bindParam(4,$data);
+			$statement->bindParam(4,$dataViatge);
 			$statement->bindParam(5,$validChoice2);
 			$statement->execute();
 
@@ -95,7 +113,7 @@ validarGeneroOk($validGenero, $errors);
 						   'Destino' => $validChoice1,
 						   'Precio total' => $preu,
 						   'Número de personas' => $validPersonas,
-						   'Fecha' => $data,
+						   'Fecha' => $dataViatge,
 						   'País' => $validChoice2
 					   );
 		   
@@ -106,7 +124,7 @@ validarGeneroOk($validGenero, $errors);
 					   for ($i = $inicio; $i < $totalViajes; $i++) {
 						   $viaje = $_SESSION['viajes'][$i];
 						   echo "Destino: " . $viaje['Destino'] . "<br>";
-						   echo "Precio total: " . $viaje['Precio total'] . "<br>";
+						   echo "Precio total: " . $viaje['Precio total'] . " €" . "<br>";
 						   echo "Número de personas: " . $viaje['Número de personas'] . "<br>";
 						   echo "Fecha: " . $viaje['Fecha'] . "<br>";
 						   echo "País: " . $viaje['País'] . "<br>";

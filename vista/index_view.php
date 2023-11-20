@@ -14,7 +14,7 @@
 	</head>
 	<body>
 		<form method="post" action="../controlador/index.php">
-		<div id="data" class="datahora"></div><br><br>
+		<div id="data" name="data" class="datahora"></div><br><br>
 		Data <input type="date" id="datahora" name="datahora" ><br>
 		Desti 		
 		<select class="form-control" id="choice1" name="choice1">
