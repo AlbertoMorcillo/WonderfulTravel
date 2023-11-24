@@ -69,8 +69,8 @@
 		   
 		   <select class="form-control" id="choice2" name ="choice2">
 		   	 <option data-option="ASIA" 	value="defecto"selected>Sel·lecciona un país</option>
-			 <option data-option="ASIA"    value="Afganistán">Afganistán</option>
-			 <option data-option="ASIA"    value="Japón">Japón</option>
+			 <option data-option="ASIA"    value="Afganistan">Afganistán</option>
+			 <option data-option="ASIA"    value="Japon">Japón</option>
 			 <option data-option="ASIA"    value="Yemen">Yemen</option>
 			 <option data-option="EUROPA" 	value="defecto"selected>Sel·lecciona un país</option>
 			 <option data-option="EUROPA"   value="España">España</option>
@@ -81,7 +81,7 @@
 			 <option data-option="ÀFRICA"   value="Sierra Leona">Sierra Leona</option>
 			 <option data-option="ÀFRICA"    value="Marruecos">Marruecos</option>
 			 <option data-option="AMÈRICA" 	value="defecto"selected>Sel·lecciona un país</option>
-			 <option data-option="AMÈRICA"   value="México">México</option>
+			 <option data-option="AMÈRICA"   value="Mexico">México</option>
 			 <option data-option="AMÈRICA"    value="Brasil">Brasil</option>
 			 <option data-option="AMÈRICA"   value="Argentina">Argentina</option>
 		   </select><br>

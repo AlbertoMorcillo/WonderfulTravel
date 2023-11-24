@@ -16,7 +16,7 @@ const ARGENTINA_PRECIO = 1075;
 
   // Función para calcular el precio
   function calcularPrecio() {
-    let pais = document.getElementById('choice2').value;
+    let pais = document.getElementById('choice2').value.toLowerCase();
     let personas = parseInt(document.getElementById('persones').value);
     let descuento = document.getElementById('descompte').checked;
 
@@ -28,30 +28,42 @@ const ARGENTINA_PRECIO = 1075;
 let precioTotal = 0;
     //let precioTotal = precioBase * personas;
     switch (pais){
-      case "España": 
+      case "españa": 
         precioTotal = ESPAÑA_PRECIO;
-      case "Portugal":
+        break;
+      case "portugal":
         precioTotal = PORTUGAL_PRECIO;
-      case "Luxemburgo":
+        break;
+      case "luxemburgo":
         precioTotal = LUXEMBURGO_PRECIO;
-      case "Afganistán":
+        break;
+      case "afganistan":
         precioTotal = AFGANISTAN_PRECIO;
-      case "Japón":
+        break;
+      case "japon":
         precioTotal = JAPON_PRECIO;
-      case "Yemen":
+        break;
+      case "yemen":
         precioTotal = YEMEN_PRECIO;
-      case "Uganda":
+        break;
+      case "uganda":
         precioTotal = UGANDA_PRECIO;
-      case "Sierra Leona":
+        break;
+      case "sierra leona":
         precioTotal = SIERRA_LEONA_PRECIO;
-      case "Marruecos":
+        break;
+      case "marruecos":
         precioTotal = MARRUECOS_PRECIO;
-      case "México":
+        break;
+      case "mexico":
         precioTotal = MEXICO_PRECIO;
-      case "Argentina":
+        break;
+      case "argentina":
         precioTotal = ARGENTINA_PRECIO;
-      case "Brasil":
+        break;
+      case "brasil":
         precioTotal = BRASIL_PRECIO;
+        break;
     } 
     document.getElementById('preu').value = precioTotal;
   }

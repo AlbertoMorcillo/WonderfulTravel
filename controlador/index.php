@@ -45,7 +45,7 @@
 			div.datahora{font-size:1.2em; font-weight:bold; color:white; text-align:center; border-radius:0.9em; background-image:linear-gradient(#cebe27, #45ab76); width:9em; padding:0.4em 0;}
 			iframe{border:1px solid black; width:1000px; height: 500px;}
 		</style>
-		    <link rel="stylesheet" href="estils.css"> <!-- Hacer referencia a tu archivo de estilos -->
+		    <link rel="stylesheet" href="../estilos/style.css"> <!-- Hacer referencia a tu archivo de estilos -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script defer src="../vista/script.js"></script>
 		<script defer src="../vista/calculos.js"></script>
