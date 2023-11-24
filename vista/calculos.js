@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const AFGANISTAN_PRECIO = 3523;
 const JAPON_PRECIO = 1231;
