@@ -73,15 +73,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
 require 'Validaciones.php';
 
-//validarData($valor,$errors);
+$dataViatge = $valor;
+$fechaDelViaje = new DateTime($dataViatge);
+$fechaActual = new DateTime();
+
+validarData($fechaDelViaje, $fechaActual, $errors);
 validarNombreOk($validNombre, $errors);
 validarApellidoOk($validApellido, $errors);
 validarEmailOk($validEmail, $errors);
 validarTelfOk($validTelf, $errors);
 validarGeneroOk($validGenero, $errors);
-$dataViatge = $valor;
-$fecha1 = new DateTime($dataViatge);
-$fecha2 = new DateTime();
+
 
 if (empty($errors)){
 	try {

@@ -52,5 +52,12 @@ function validadNumPersonas($validPersonas, &$errors){
     } 
 }
 
+function validarData($fechaDelViaje, $fechaActual, $errors) {   
+    $diferencia = $fechaDelViaje-> diff($fechaActual);
+    $data = $diferencia->format("%a");
 
-?>
+    if ($fechaDelViaje < $fechaActual) {
+        $errors .= 'La fecha del viaje no puede ser anterior a la fecha actual.<br>';
+    }
+    return $errors;
+}
