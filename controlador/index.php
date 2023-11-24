@@ -55,6 +55,7 @@ $errors = '';
 $valor = '';
 if (isset($_POST["datahora"])) {
 	$valor = $_POST["datahora"];
+	echo $valor;
 }
 $validChoice1 = isset($_POST['choice1']) ? htmlspecialchars($_POST['choice1']) : '';
 $validChoice2 = isset($_POST['choice2']) ? htmlspecialchars($_POST['choice2']) : 'asajnsanskj';
@@ -72,6 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
 require 'Validaciones.php';
 
+//validarData($valor,$errors);
 validarNombreOk($validNombre, $errors);
 validarApellidoOk($validApellido, $errors);
 validarEmailOk($validEmail, $errors);
@@ -81,7 +83,7 @@ $dataViatge = $valor;
 $fecha1 = new DateTime($dataViatge);
 $fecha2 = new DateTime();
 
-/**if (empty($errors)){
+if (empty($errors)){
 	try {
 		// Establecer la conexión a la base de datos
 		$connexio = new PDO('mysql:host=localhost;dbname=wonderfull_travel', 'root', '');
@@ -99,25 +101,12 @@ $fecha2 = new DateTime();
 		echo "Error de conexión a la base de datos: " . $e->getMessage();
 		die();
 	}
-	}*/
+	}
 	if (!isset($_SESSION['viaje_insertado'])) {
 	if (empty($errors)){
 		try {
 			$preu = 1;
 			$dataViatge = $valor;
-			/**
-			 * $fecha1 = new DateTime($dataViatge);
-			*  $fecha2 = new DateTime();
-
-			*  $diferencia = $fecha1->diff($fecha2);
-			
-			*  $data = $diferencia->format("%a");
-			*  if ($data == 0){
-			* 	 $data = 1;
-			* }
-			* echo "La diferencia en noches es: " . $data . " noches";
-			 */
-
 			// Establecer la conexión a la base de datos
 
 			$connexio = new PDO('mysql:host=localhost;dbname=wonderfull_travel', 'root', '');
