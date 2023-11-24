@@ -5,68 +5,7 @@
 	<title>WONDERFULL TRAVELL</title>
 	<meta charset="UTF-8" />
 	<style>
-		.clock {
-			margin: 0px auto;
-			width: 650px;
-			height: 650px;
-			fill: black
-		}
 
-		.outer-circle,
-		.center-circle {
-			fill: DarkSlateGray;
-		}
-
-		.hours,
-		.minutes,
-		.seconds {
-			transform-origin: center;
-			stroke-linecap: round;
-		}
-
-		.hours {
-			stroke: fuchsia;
-			stroke-width: 3px;
-			transition: transform 1s ease-in-out;
-		}
-
-		.minutes {
-			stroke-width: 2px;
-			stroke: lime;
-			transition: transform 1s ease-in-out;
-		}
-
-		.seconds {
-			stroke: white;
-		}
-
-		.line {
-			stroke-width: 1px;
-			stroke: white;
-			stroke-linecap: round;
-			transform-origin: center;
-		}
-
-		body {
-			font-family: Arial, Helvetica, sans-serif;
-		}
-
-		div.datahora {
-			font-size: 1.2em;
-			font-weight: bold;
-			color: white;
-			text-align: center;
-			border-radius: 0.9em;
-			background-image: linear-gradient(#cebe27, #45ab76);
-			width: 9em;
-			padding: 0.4em 0;
-		}
-
-		iframe {
-			border: 1px solid black;
-			width: 1000px;
-			height: 500px;
-		}
 	</style>
 	<link rel="stylesheet" href="../estilos/style.css"> <!-- Hacer referencia a tu archivo de estilos -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

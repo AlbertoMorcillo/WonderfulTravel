@@ -3,57 +3,10 @@
 	<head>
 		<title>WONDERFULL TRAVELL</title>
 		<meta charset="UTF-8" />
-		<style>
-			.clock {
-    margin: 0px auto;
-    width: 650px;
-    height: 650px;
-    fill: black
-  }
-  .outer-circle,
-  .center-circle {
-    fill: DarkSlateGray;
-  }
-  
-  .hours,
-  .minutes,
-  .seconds {
-    transform-origin: center;
-    stroke-linecap: round;
-  }
-  
-  .hours {
-    stroke: fuchsia;
-    stroke-width: 3px; 
-    transition: transform 1s ease-in-out;
-  }
-  .minutes {
-    stroke-width: 2px; 
-    stroke: lime;
-    transition: transform 1s ease-in-out;
-  }
-  .seconds {
-    stroke: white;
-  }
-  
-  .line {
-    stroke-width: 1px;
-    stroke: white;
-    stroke-linecap: round;
-    transform-origin: center;
-  }
-		</style>
 		    <link rel="stylesheet" href="../estilos/style.css"> <!-- Hacer referencia a tu archivo de estilos -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-		<script src="./calculos.js"></script>
-		<script defer src="DataHora.js"></script>
-
 	</head>
 	<body>
-
-
-<!-- partial -->
-<script  src="./script.js"></script>
 <!-- partial -->
 		<form method="post" action="../controlador/index.php">
 
