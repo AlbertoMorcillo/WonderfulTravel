@@ -30,12 +30,46 @@ let precioTotal = 0;
     switch (pais){
       case "España": 
         precioTotal = ESPAÑA_PRECIO;
+        break;
+      case "Portugal":
+        precioTotal = PORTUGAL_PRECIO;
+        break;
+      case "Luxemburgo":
+        precioTotal = LUXEMBURGO_PRECIO;
+        break;
+      case "Afganistán":
+        precioTotal = AFGANISTAN_PRECIO;
+        break;
+      case "Japón":
+        precioTotal = JAPON_PRECIO;
+        break;
+      case "Yemen":
+        precioTotal = YEMEN_PRECIO;
+        break;
+      case "Uganda":
+        precioTotal = UGANDA_PRECIO;
+        break;
+      case "Sierra leona":
+        precioTotal = SIERRA_LEONA_PRECIO;
+        break;
+      case "Marruecos":
+        precioTotal = MARRUECOS_PRECIO;
+        break;
+      case "México":
+        precioTotal = MEXICO_PRECIO;
+        break;
+      case "Argentina":
+        precioTotal = ARGENTINA_PRECIO;
+        break;
+      case "Brasil":
+        precioTotal = BRASIL_PRECIO;
+        break;
     } 
     document.getElementById('preu').value = precioTotal;
   }
 
   // Event listeners para detectar cambios en los campos relevantes
-  document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('choice2').addEventListener('change', calcularPrecio);
     //document.getElementById('persones').addEventListener('input', calcularPrecio);
     document.getElementById('descompte').addEventListener('change', calcularPrecio);
