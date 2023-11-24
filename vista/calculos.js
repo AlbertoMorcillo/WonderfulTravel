@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const AFGANISTAN_PRECIO = 3523;
 const JAPON_PRECIO = 1231;
@@ -16,7 +16,7 @@ const ARGENTINA_PRECIO = 1075;
 
   // Función para calcular el precio
   function calcularPrecio() {
-    let pais = document.getElementById('choice2').value.toLowerCase();
+    let pais = document.getElementById('choice2').value;
     let personas = parseInt(document.getElementById('persones').value);
     let descuento = document.getElementById('descompte').checked;
 
@@ -28,40 +28,40 @@ const ARGENTINA_PRECIO = 1075;
 let precioTotal = 0;
     //let precioTotal = precioBase * personas;
     switch (pais){
-      case "españa": 
+      case "España": 
         precioTotal = ESPAÑA_PRECIO;
         break;
-      case "portugal":
+      case "Portugal":
         precioTotal = PORTUGAL_PRECIO;
         break;
-      case "luxemburgo":
+      case "Luxemburgo":
         precioTotal = LUXEMBURGO_PRECIO;
         break;
-      case "afganistan":
+      case "Afganistán":
         precioTotal = AFGANISTAN_PRECIO;
         break;
-      case "japon":
+      case "Japón":
         precioTotal = JAPON_PRECIO;
         break;
-      case "yemen":
+      case "Yemen":
         precioTotal = YEMEN_PRECIO;
         break;
-      case "uganda":
+      case "Uganda":
         precioTotal = UGANDA_PRECIO;
         break;
-      case "sierra leona":
+      case "Sierra leona":
         precioTotal = SIERRA_LEONA_PRECIO;
         break;
-      case "marruecos":
+      case "Marruecos":
         precioTotal = MARRUECOS_PRECIO;
         break;
-      case "mexico":
+      case "México":
         precioTotal = MEXICO_PRECIO;
         break;
-      case "argentina":
+      case "Argentina":
         precioTotal = ARGENTINA_PRECIO;
         break;
-      case "brasil":
+      case "Brasil":
         precioTotal = BRASIL_PRECIO;
         break;
     } 
