@@ -55,8 +55,8 @@ $errors = '';
 $valor = '';
 if (isset($_POST["datahora"])) {
 	$valor = $_POST["datahora"];
-	echo $valor;
 }
+
 $validChoice1 = isset($_POST['choice1']) ? htmlspecialchars($_POST['choice1']) : '';
 $validChoice2 = isset($_POST['choice2']) ? htmlspecialchars($_POST['choice2']) : 'asajnsanskj';
 $validNombre = isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : '';
@@ -65,7 +65,8 @@ $validEmail = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '';
 $validTelf = isset($_POST['telefon']) ? htmlspecialchars($_POST['telefon']) : '';
 $validGenero = isset($_POST['genere']) ? htmlspecialchars($_POST['genere']) : '';
 $validPersonas = isset($_POST['persones']) ? htmlspecialchars($_POST['persones']) : 1;
-$validDescuento = isset($_POST['descompte']) ? htmlspecialchars($_POST['descompte']) : '';
+$validDescuento = isset($_POST['descompte']) ? "SI" : "NO";
+
 // Mostrar precio al poner el validChoice2 = $preu
 // Comparar data esrita a la de hoy para sacar las noches que se quedan
 
@@ -120,6 +121,9 @@ if (empty($errors)){
 			}
 
 			$preu = $preu * $validPersonas;
+			if ($validDescuento == "SI"){
+				$preu = $preu - (($preu * 10) / 100);
+			}
 			$statement = $connexio->prepare("INSERT INTO viatges (destí, preu_total, num_persones, data, pais) VALUES (?,?,?,?,?)");
 			$statement->bindParam(1,$validChoice1);
 			$statement->bindParam(2,$preu);
@@ -136,8 +140,9 @@ if (empty($errors)){
 						   'Precio total' => $preu,
 						   'Número de personas' => $validPersonas,
 						   'Fecha' => $dataViatge,
-						   'País' => $validChoice2
-					   );
+						   'País' => $validChoice2,
+						   'Descompte' => $validDescuento
+						);
 		   
 					   // Mostrar la información de viajes anteriores almacenada en la sesión
 					   $totalViajes = count($_SESSION['viajes']);
@@ -150,6 +155,8 @@ if (empty($errors)){
 						   echo "Número de personas: " . $viaje['Número de personas'] . "<br>";
 						   echo "Fecha: " . $viaje['Fecha'] . "<br>";
 						   echo "País: " . $viaje['País'] . "<br>";
+						   echo "Descompte: " . $viaje['Descompte'] . "<br>";
+						   // TODO: De cuanto es el desccuento? 
 						   echo "<br>";
 					   }
             // Establecer el modo de errores para PDO

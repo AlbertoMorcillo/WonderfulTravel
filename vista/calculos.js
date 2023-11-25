@@ -30,40 +30,61 @@ let precioTotal = 0;
     switch (pais){
       case "España": 
         precioTotal = ESPAÑA_PRECIO;
+        document.getElementById('countryImage').src = '../assets/images/europa/españa.webp';
         break;
       case "Portugal":
         precioTotal = PORTUGAL_PRECIO;
+        document.getElementById('countryImage').src = '../assets/images/europa/portugal.webp';
         break;
       case "Luxemburgo":
         precioTotal = LUXEMBURGO_PRECIO;
+        document.getElementById('countryImage').src = '../assets/images/europa/luxemburgo.webp';
         break;
       case "Afganistán":
         precioTotal = AFGANISTAN_PRECIO;
+        document.getElementById('countryImage').src = '../assets/images/asia/afganistan2.webp';
+
         break;
       case "Japón":
         precioTotal = JAPON_PRECIO;
+        document.getElementById('countryImage').src = '../assets/images/asia/japon.webp';
         break;
       case "Yemen":
         precioTotal = YEMEN_PRECIO;
+        document.getElementById('countryImage').src = '../assets/images/asia/yemen.webp';
+
         break;
       case "Uganda":
         precioTotal = UGANDA_PRECIO;
+        document.getElementById('countryImage').src = '../assets/images/africa/uganda.webp';
+
         break;
-      case "Sierra leona":
+      case "Sierra Leona":
         precioTotal = SIERRA_LEONA_PRECIO;
+        document.getElementById('countryImage').src = '../assets/images/africa/SierraLeona.webp';
+
         break;
       case "Marruecos":
         precioTotal = MARRUECOS_PRECIO;
+        document.getElementById('countryImage').src = '../assets/images/africa/marruecos.webp';
+
         break;
       case "México":
         precioTotal = MEXICO_PRECIO;
+        document.getElementById('countryImage').src = '../assets/images/america/mexico.webp';
+
         break;
       case "Argentina":
         precioTotal = ARGENTINA_PRECIO;
+        document.getElementById('countryImage').src = '../assets/images/america/argentina.webp';
+
         break;
       case "Brasil":
         precioTotal = BRASIL_PRECIO;
+        document.getElementById('countryImage').src = '../assets/images/america/brasil.webp';
         break;
+
+
     } 
     document.getElementById('preu').value = precioTotal;
   }
