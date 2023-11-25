@@ -38,6 +38,8 @@
 			 <option data-option="AMÈRICA"    value="Brasil">Brasil</option>
 			 <option data-option="AMÈRICA"   value="Argentina">Argentina</option>
 		   </select><br>
+		   <img id="countryImage" src="" alt="Imagen del país">
+
 		Nom <input type="text" id="nom" name="nom" value="<?php if(isset($_POST['nom']) && !(empty($errors))) { echo($_POST['nom']);} ?>" ><br>
 		Apellidos <input type="text" id="cognoms" name="cognoms" value="<?php if(isset($_POST['cognoms']) && !(empty($errors))) { echo($_POST['cognoms']);} ?>"><br>
 		Email <input type="text" id="email" name="email" value="<?php if(isset($_POST['email']) && !(empty($errors))) { echo($_POST['email']);} ?>"><br>
@@ -54,7 +56,7 @@
 		Telèfon <input type="text" id="telefon" name="telefon" value="<?php if(isset($_POST['telefon']) && !(empty($errors))) { echo($_POST['telefon']);} ?>"><br>
 		Persones <input type="number" id="persones" name="persones" min="1" max="100" value="<?php if(isset($_POST['persones']) && !(empty($errors))) { echo($_POST['persones']);} ?>"><br>
 		Descompte <input type="checkbox" id="descompte" name="descompte" value="<?php if(isset($_POST['descompte']) && !(empty($errors))) { echo($_POST['descompte']);} ?>"><br>
-        <span class="error">
+		<span class="error">
 		<?php if (isset($errors) && !empty($errors)) : ?>
         <div class="error-message">
             <?php echo $errors ?>
