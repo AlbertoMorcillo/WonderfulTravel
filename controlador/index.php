@@ -37,9 +37,6 @@
 				<line x1="60" y1="5" x2="60" y2="10" class="line" />
 			</svg>
 		</div>
-		<form method="post">
-    <button class="btn-delete-comment custom" type="submit" name="delete-article" id="delete-article" value="' . $viaje['uniqid'] . '">Borrar reserva</button>
-</form>
 	</body>
 </html>
 
