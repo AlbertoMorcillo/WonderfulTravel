@@ -37,6 +37,9 @@
 				<line x1="60" y1="5" x2="60" y2="10" class="line" />
 			</svg>
 		</div>
+		<form method="post">
+    <button class="btn-delete-comment custom" type="submit" name="delete-article" id="delete-article" value="' . $viaje['uniqid'] . '">Borrar reserva</button>
+</form>
 	</body>
 </html>
 
@@ -72,7 +75,26 @@ $validDescuento = isset($_POST['descompte']) ? "SI" : "NO";
 
 // Mostrar precio al poner el validChoice2 = $preu
 // Comparar data esrita a la de hoy para sacar las noches que se quedan
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['delete-article'])) {
+	$connexio = new PDO('mysql:host=localhost;dbname=wonderfull_travel', 'root', '');
 
+    $uniqidToDelete = $_GET['delete-article'];
+
+    // Eliminar la reserva de la base de datos
+    $statement = $connexio->prepare("DELETE FROM viatges WHERE uniqid = ?");
+    $statement->bindParam(1, $uniqidToDelete);
+    $statement->execute();
+
+    // Eliminar la reserva de la sesión
+    foreach ($_SESSION['viajes'] as $index => $viaje) {
+        if ($viaje['uniqid'] === $uniqidToDelete) {
+            unset($_SESSION['viajes'][$index]);
+            $_SESSION['viajes'] = array_values($_SESSION['viajes']);
+            echo "Eliminación exitosa";
+            break;  // Salir del bucle una vez que se encuentra y elimina la entrada
+        }
+    }
+}
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
 require 'Validaciones.php';
@@ -129,6 +151,7 @@ if (empty($errors)){
 				$preu = $preu - (($preu * 10) / 100);
 			}
 			$uniqid = uniqid();
+			echo $uniqid;
 			$statement = $connexio->prepare("INSERT INTO viatges (destí, preu_total, num_persones, data, pais, uniqid) VALUES (?,?,?,?,?,?)");
 			
 			$statement->bindParam(1, $validChoice1);
@@ -139,9 +162,10 @@ if (empty($errors)){
 			$statement->bindParam(6, $uniqid);
 			$statement->execute();
 
+
 					   // Limitar la visualización a tres registros
 			$_SESSION['viajes'][] = array(
-							'uniqid' => uniqid(),
+							'uniqid' => $uniqid,
 							'Destino' => $validChoice1,
 							'Precio total' => $preu,
 							'Número de personas' => $validPersonas,
@@ -150,8 +174,6 @@ if (empty($errors)){
 							'Descompte' => $validDescuento,
 							'Imagen' => strtolower($validChoice1) . '/' . strtolower($validChoice2) . '2.webp' 
 						);
-			echo strtolower($validChoice1);
-			echo strtolower($validChoice2);
 			// Mostrar la información de viajes anteriores almacenada en la sesión
 			$totalViajes = count($_SESSION['viajes']);
 			$inicio = $totalViajes > 3 ? $totalViajes - 3 : 0;
@@ -164,31 +186,15 @@ if (empty($errors)){
 			$viatges.= "<strong>"."Fecha: "."</strong>" . $viaje['Fecha'] . "<br>";
 			$viatges.= "<strong>"."País: "."</strong>" . $viaje['País'] . "<br>";
 			$viatges.= "<strong>"."Descompte: "."</strong>" . $viaje['Descompte'] . "<br>";
-			$viatges.= '<form method="post">';
-			$viatges.= '<button class="btn-delete-comment custom" name="delete-article" value="' . $viaje['uniqid'] . '">Borrar reserva</button>';
+			$viatges.= '<form method="get" action="./index.php">';
+			$viatges.= '<button class="btn-delete-comment custom" type="submit" name="delete-article" value="' . $viaje['uniqid'] . '">Borrar reserva</button>';
 			$viatges.= '</form>';
 			$viatges.= "<br>";
 }
-            // Establecer el modo de errores para PDO
-            $connexio->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);		
-			if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete-article'])) {
-				$uniqidToDelete = $_POST['delete-article'];
-				foreach ($_SESSION['viajes'] as $index => $viaje) {
-					if ($viaje['uniqid'] === $uniqidToDelete) {
-						// Eliminar la reserva de la sesión
-						unset($_SESSION['viajes'][$index]);
-						// Reindexar el array para evitar huecos
-						$_SESSION['viajes'] = array_values($_SESSION['viajes']);
-			
-						// Eliminar la reserva de la base de datos
-						$statement = $connexio->prepare("DELETE FROM viatges WHERE uniqid = ?");
-						$statement->bindParam(1, $uniqidToDelete);
-						$statement->execute();
-			
-						break;
-					}
-				}
-			}
+
+// Manejo de eliminación después de enviar el formulario
+
+
 		}
 			catch(PDOException $e) {
 			// Manejar errores de conexión
