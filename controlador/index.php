@@ -128,17 +128,20 @@ if (empty($errors)){
 			if ($validDescuento == "SI"){
 				$preu = $preu - (($preu * 10) / 100);
 			}
-			$statement = $connexio->prepare("INSERT INTO viatges (destí, preu_total, num_persones, data, pais) VALUES (?,?,?,?,?)");
-			$statement->bindParam(1,$validChoice1);
-			$statement->bindParam(2,$preu);
-			$statement->bindParam(3,$validPersonas);
-			$statement->bindParam(4,$dataViatge);
-			$statement->bindParam(5,$validChoice2);
+			$uniqid = uniqid();
+			$statement = $connexio->prepare("INSERT INTO viatges (destí, preu_total, num_persones, data, pais, uniqid) VALUES (?,?,?,?,?,?)");
+			
+			$statement->bindParam(1, $validChoice1);
+			$statement->bindParam(2, $preu);
+			$statement->bindParam(3, $validPersonas);
+			$statement->bindParam(4, $dataViatge);
+			$statement->bindParam(5, $validChoice2);
+			$statement->bindParam(6, $uniqid);
 			$statement->execute();
 
 					   // Limitar la visualización a tres registros
 			$_SESSION['viajes'][] = array(
-							'id' => uniqid(),
+							'uniqid' => uniqid(),
 							'Destino' => $validChoice1,
 							'Precio total' => $preu,
 							'Número de personas' => $validPersonas,
@@ -162,24 +165,24 @@ if (empty($errors)){
 			$viatges.= "<strong>"."País: "."</strong>" . $viaje['País'] . "<br>";
 			$viatges.= "<strong>"."Descompte: "."</strong>" . $viaje['Descompte'] . "<br>";
 			$viatges.= '<form method="post">';
-			$viatges.= '<button class="btn-delete-comment custom" name="delete-article" value="' . $viaje['id'] . '">Borrar reserva</button>';
+			$viatges.= '<button class="btn-delete-comment custom" name="delete-article" value="' . $viaje['uniqid'] . '">Borrar reserva</button>';
 			$viatges.= '</form>';
 			$viatges.= "<br>";
 }
             // Establecer el modo de errores para PDO
             $connexio->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);		
 			if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete-article'])) {
-				$idToDelete = $_POST['delete-article'];
+				$uniqidToDelete = $_POST['delete-article'];
 				foreach ($_SESSION['viajes'] as $index => $viaje) {
-					if ($viaje['id'] === $idToDelete) {
+					if ($viaje['uniqid'] === $uniqidToDelete) {
 						// Eliminar la reserva de la sesión
 						unset($_SESSION['viajes'][$index]);
 						// Reindexar el array para evitar huecos
 						$_SESSION['viajes'] = array_values($_SESSION['viajes']);
 			
 						// Eliminar la reserva de la base de datos
-						$statement = $connexio->prepare("DELETE FROM viatges WHERE id = ?");
-						$statement->bindParam(1, $idToDelete);
+						$statement = $connexio->prepare("DELETE FROM viatges WHERE uniqid = ?");
+						$statement->bindParam(1, $uniqidToDelete);
 						$statement->execute();
 			
 						break;
