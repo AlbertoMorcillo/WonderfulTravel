@@ -30,15 +30,15 @@ let precioTotal = 0;
     switch (pais){
       case "España": 
         precioTotal = ESPAÑA_PRECIO;
-        document.getElementById('countryImage').src = '../assets/images/europa/españa.webp';
+        document.getElementById('countryImage').src = '../assets/images/europa/españa2.webp';
         break;
       case "Portugal":
         precioTotal = PORTUGAL_PRECIO;
-        document.getElementById('countryImage').src = '../assets/images/europa/portugal.webp';
+        document.getElementById('countryImage').src = '../assets/images/europa/portugal2.webp';
         break;
       case "Luxemburgo":
         precioTotal = LUXEMBURGO_PRECIO;
-        document.getElementById('countryImage').src = '../assets/images/europa/luxemburgo.webp';
+        document.getElementById('countryImage').src = '../assets/images/europa/luxemburgo2.webp';
         break;
       case "Afganistán":
         precioTotal = AFGANISTAN_PRECIO;
@@ -47,41 +47,41 @@ let precioTotal = 0;
         break;
       case "Japón":
         precioTotal = JAPON_PRECIO;
-        document.getElementById('countryImage').src = '../assets/images/asia/japon.webp';
+        document.getElementById('countryImage').src = '../assets/images/asia/japon2.webp';
         break;
       case "Yemen":
         precioTotal = YEMEN_PRECIO;
-        document.getElementById('countryImage').src = '../assets/images/asia/yemen.webp';
+        document.getElementById('countryImage').src = '../assets/images/asia/yemen2.webp';
 
         break;
       case "Uganda":
         precioTotal = UGANDA_PRECIO;
-        document.getElementById('countryImage').src = '../assets/images/africa/uganda.webp';
+        document.getElementById('countryImage').src = '../assets/images/africa/uganda2.webp';
 
         break;
       case "Sierra Leona":
         precioTotal = SIERRA_LEONA_PRECIO;
-        document.getElementById('countryImage').src = '../assets/images/africa/SierraLeona.webp';
+        document.getElementById('countryImage').src = '../assets/images/africa/SierraLeona2.webp';
 
         break;
       case "Marruecos":
         precioTotal = MARRUECOS_PRECIO;
-        document.getElementById('countryImage').src = '../assets/images/africa/marruecos.webp';
+        document.getElementById('countryImage').src = '../assets/images/africa/marruecos2.webp';
 
         break;
       case "México":
         precioTotal = MEXICO_PRECIO;
-        document.getElementById('countryImage').src = '../assets/images/america/mexico.webp';
+        document.getElementById('countryImage').src = '../assets/images/america/mexico2.webp';
 
         break;
       case "Argentina":
         precioTotal = ARGENTINA_PRECIO;
-        document.getElementById('countryImage').src = '../assets/images/america/argentina.webp';
+        document.getElementById('countryImage').src = '../assets/images/america/argentina2.webp';
 
         break;
       case "Brasil":
         precioTotal = BRASIL_PRECIO;
-        document.getElementById('countryImage').src = '../assets/images/america/brasil.webp';
+        document.getElementById('countryImage').src = '../assets/images/america/brasil2.webp';
         break;
 
 

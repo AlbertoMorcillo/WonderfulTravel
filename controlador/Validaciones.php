@@ -55,7 +55,6 @@ function validadNumPersonas($validPersonas, &$errors){
 function validarData($fechaDelViaje, $fechaActual, &$errors) {   
     $diferencia = $fechaActual-> diff($fechaDelViaje);
     $data = $diferencia->format("%R%a");
-    echo $data;
 
     if ($data < 0) {
         $errors .= 'La fecha del viaje no puede ser anterior a la fecha actual.<br>';

@@ -43,6 +43,7 @@
 </html>
 
 <?php
+
 // Iniciar o reanudar la sesión
 session_start();
 
@@ -52,6 +53,7 @@ if (!isset($_SESSION['viajes'])) {
 }
 
 $errors = '';
+$viatges = '';
 $valor = '';
 if (isset($_POST["datahora"])) {
 	$valor = $_POST["datahora"];
@@ -87,6 +89,7 @@ validarGeneroOk($validGenero, $errors);
 
 
 if (empty($errors)){
+
 	try {
 		// Establecer la conexión a la base de datos
 		$connexio = new PDO('mysql:host=localhost;dbname=wonderfull_travel', 'root', '');
@@ -147,27 +150,25 @@ if (empty($errors)){
 					   // Mostrar la información de viajes anteriores almacenada en la sesión
 					   $totalViajes = count($_SESSION['viajes']);
 					   $inicio = $totalViajes > 3 ? $totalViajes - 3 : 0;
-		   
 					   for ($i = $inicio; $i < $totalViajes; $i++) {
 						   $viaje = $_SESSION['viajes'][$i];
-						   echo "Destino: " . $viaje['Destino'] . "<br>";
-						   echo "Precio total: " . $viaje['Precio total'] . " €" . "<br>";
-						   echo "Número de personas: " . $viaje['Número de personas'] . "<br>";
-						   echo "Fecha: " . $viaje['Fecha'] . "<br>";
-						   echo "País: " . $viaje['País'] . "<br>";
-						   echo "Descompte: " . $viaje['Descompte'] . "<br>";
-						   // TODO: De cuanto es el desccuento? 
-						   echo "<br>";
+						   $viatges.= "Destino: " . $viaje['Destino'] . "<br>";
+						   $viatges.= "Precio total: " . $viaje['Precio total'] . " €" . "<br>";
+						   $viatges.= "Número de personas: " . $viaje['Número de personas'] . "<br>";
+						   $viatges.= "Fecha: " . $viaje['Fecha'] . "<br>";
+						   $viatges.= "País: " . $viaje['País'] . "<br>";
+						   $viatges.= "Descompte: " . $viaje['Descompte'] . "<br>";
+						   $viatges.= "<br>";
 					   }
             // Establecer el modo de errores para PDO
             $connexio->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);		} catch(PDOException $e) {
 			// Manejar errores de conexión
 			echo "Error de conexión a la base de datos: " . $e->getMessage();
 			die();
+			}
 		}
-		}
-
-}
+	}
 }
 include '../vista/index_view.php';
+
 ?>
