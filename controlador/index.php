@@ -55,10 +55,13 @@ if (!isset($_SESSION['viajes'])) {
 $errors = '';
 $viatges = '';
 $valor = '';
-if (isset($_POST["datahora"])) {
-	$valor = $_POST["datahora"];
-}
-
+// if (isset($_POST["datahora"])) {
+//     $valor = $_POST["datahora"];
+// } else {
+//     $valor = (new DateTime())->format('Y-m-d');
+// 	echo $valor;
+// }
+$valor = isset($_POST['datahora']) ? $_POST['datahora'] : (new DateTime())->format('Y-m-d');
 $validChoice1 = isset($_POST['choice1']) ? htmlspecialchars($_POST['choice1']) : '';
 $validChoice2 = isset($_POST['choice2']) ? htmlspecialchars($_POST['choice2']) : 'asajnsanskj';
 $validNombre = isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : '';
