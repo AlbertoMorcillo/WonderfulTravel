@@ -136,37 +136,57 @@ if (empty($errors)){
 			$statement->bindParam(5,$validChoice2);
 			$statement->execute();
 
-		
-		   
 					   // Limitar la visualización a tres registros
-					   $_SESSION['viajes'][] = array(
-						   'Destino' => $validChoice1,
-						   'Precio total' => $preu,
-						   'Número de personas' => $validPersonas,
-						   'Fecha' => $dataViatge,
-						   'País' => $validChoice2,
-						   'Descompte' => $validDescuento,
-						   'Imagen' => strtolower($validChoice1) . '/' . strtolower($validChoice2) . '2.webp' // Ruta de la imagen						);
-					   );
-					   echo strtolower($validChoice1);
-					   echo strtolower($validChoice2);
-					   // Mostrar la información de viajes anteriores almacenada en la sesión
-					   $totalViajes = count($_SESSION['viajes']);
-					   $inicio = $totalViajes > 3 ? $totalViajes - 3 : 0;
-					   for ($i = $inicio; $i < $totalViajes; $i++) {
-						   $viaje = $_SESSION['viajes'][$i];
-						   $viatges.= "<strong>"."Destino: "."</strong>" . $viaje['Destino'] . "<br>";
-						   $viatges.= "<strong>"."Precio total: "."</strong>" . $viaje['Precio total'] . " €" . "<br>";
-						   $viatges.= "<img src='../assets/images/" . $viaje['Imagen'] . "' alt='' style='float: right; width: 100px;'>"; 
-						   $viatges.= "<strong>"."Número de personas: "."</strong>" . $viaje['Número de personas'] . "<br>";
-						   $viatges.= "<strong>"."Fecha: "."</strong>" . $viaje['Fecha'] . "<br>";
-						   $viatges.= "<strong>"."País: "."</strong>" . $viaje['País'] . "<br>";
-						   $viatges.= "<strong>"."Descompte: "."</strong>" . $viaje['Descompte'] . "<br>";
-						   $viatges.= "<br>";
-					   }
+			$_SESSION['viajes'][] = array(
+							'id' => uniqid(),
+							'Destino' => $validChoice1,
+							'Precio total' => $preu,
+							'Número de personas' => $validPersonas,
+							'Fecha' => $dataViatge,
+							'País' => $validChoice2,
+							'Descompte' => $validDescuento,
+							'Imagen' => strtolower($validChoice1) . '/' . strtolower($validChoice2) . '2.webp' 
+						);
+			echo strtolower($validChoice1);
+			echo strtolower($validChoice2);
+			// Mostrar la información de viajes anteriores almacenada en la sesión
+			$totalViajes = count($_SESSION['viajes']);
+			$inicio = $totalViajes > 3 ? $totalViajes - 3 : 0;
+			for ($i = $inicio; $i < $totalViajes; $i++) {
+			$viaje = $_SESSION['viajes'][$i];
+			$viatges.= "<strong>"."Destino: "."</strong>" . $viaje['Destino'] . "<br>";
+			$viatges.= "<strong>"."Precio total: "."</strong>" . $viaje['Precio total'] . " €" . "<br>";
+			$viatges.= "<img src='../assets/images/" . $viaje['Imagen'] . "' alt='' style='float: right; width: 100px;'>"; 
+			$viatges.= "<strong>"."Número de personas: "."</strong>" . $viaje['Número de personas'] . "<br>";
+			$viatges.= "<strong>"."Fecha: "."</strong>" . $viaje['Fecha'] . "<br>";
+			$viatges.= "<strong>"."País: "."</strong>" . $viaje['País'] . "<br>";
+			$viatges.= "<strong>"."Descompte: "."</strong>" . $viaje['Descompte'] . "<br>";
+			$viatges.= '<form method="post">';
+			$viatges.= '<button class="btn-delete-comment custom" name="delete-article" value="' . $viaje['id'] . '">Borrar reserva</button>';
+			$viatges.= '</form>';
+			$viatges.= "<br>";
+}
             // Establecer el modo de errores para PDO
             $connexio->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);		
-		} 
+			if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete-article'])) {
+				$idToDelete = $_POST['delete-article'];
+				foreach ($_SESSION['viajes'] as $index => $viaje) {
+					if ($viaje['id'] === $idToDelete) {
+						// Eliminar la reserva de la sesión
+						unset($_SESSION['viajes'][$index]);
+						// Reindexar el array para evitar huecos
+						$_SESSION['viajes'] = array_values($_SESSION['viajes']);
+			
+						// Eliminar la reserva de la base de datos
+						$statement = $connexio->prepare("DELETE FROM viatges WHERE id = ?");
+						$statement->bindParam(1, $idToDelete);
+						$statement->execute();
+			
+						break;
+					}
+				}
+			}
+		}
 			catch(PDOException $e) {
 			// Manejar errores de conexión
 			echo "Error de conexión a la base de datos: " . $e->getMessage();
