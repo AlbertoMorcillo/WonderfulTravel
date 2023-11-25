@@ -4,9 +4,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>WONDERFULL TRAVELL</title>
 	<meta charset="UTF-8" />
-	<style>
 
-	</style>
 	<link rel="stylesheet" href="../estilos/style.css"> <!-- Hacer referencia a tu archivo de estilos -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script defer src="../vista/script.js"></script>
@@ -147,24 +145,29 @@ if (empty($errors)){
 						   'Número de personas' => $validPersonas,
 						   'Fecha' => $dataViatge,
 						   'País' => $validChoice2,
-						   'Descompte' => $validDescuento
-						);
-		   
+						   'Descompte' => $validDescuento,
+						   'Imagen' => strtolower($validChoice1) . '/' . strtolower($validChoice2) . '2.webp' // Ruta de la imagen						);
+					   );
+					   echo strtolower($validChoice1);
+					   echo strtolower($validChoice2);
 					   // Mostrar la información de viajes anteriores almacenada en la sesión
 					   $totalViajes = count($_SESSION['viajes']);
 					   $inicio = $totalViajes > 3 ? $totalViajes - 3 : 0;
 					   for ($i = $inicio; $i < $totalViajes; $i++) {
 						   $viaje = $_SESSION['viajes'][$i];
-						   $viatges.= "Destino: " . $viaje['Destino'] . "<br>";
-						   $viatges.= "Precio total: " . $viaje['Precio total'] . " €" . "<br>";
-						   $viatges.= "Número de personas: " . $viaje['Número de personas'] . "<br>";
-						   $viatges.= "Fecha: " . $viaje['Fecha'] . "<br>";
-						   $viatges.= "País: " . $viaje['País'] . "<br>";
-						   $viatges.= "Descompte: " . $viaje['Descompte'] . "<br>";
+						   $viatges.= "<strong>"."Destino: "."</strong>" . $viaje['Destino'] . "<br>";
+						   $viatges.= "<strong>"."Precio total: "."</strong>" . $viaje['Precio total'] . " €" . "<br>";
+						   $viatges.= "<img src='../assets/images/" . $viaje['Imagen'] . "' alt='' style='float: right; width: 100px;'>"; 
+						   $viatges.= "<strong>"."Número de personas: "."</strong>" . $viaje['Número de personas'] . "<br>";
+						   $viatges.= "<strong>"."Fecha: "."</strong>" . $viaje['Fecha'] . "<br>";
+						   $viatges.= "<strong>"."País: "."</strong>" . $viaje['País'] . "<br>";
+						   $viatges.= "<strong>"."Descompte: "."</strong>" . $viaje['Descompte'] . "<br>";
 						   $viatges.= "<br>";
 					   }
             // Establecer el modo de errores para PDO
-            $connexio->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);		} catch(PDOException $e) {
+            $connexio->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);		
+		} 
+			catch(PDOException $e) {
 			// Manejar errores de conexión
 			echo "Error de conexión a la base de datos: " . $e->getMessage();
 			die();

@@ -70,3 +70,38 @@ iframe {
     width: 1000px;
     height: 500px;
 }
+  .viatges-message {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+  }
+
+  .viaje-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+
+  .viaje-item h4 {
+    color: #3498db;
+  }
+
+  .viaje-item p {
+    margin: 5px 0;
+  }
+
+  .viaje-item button {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .viaje-item button:hover {
+    background-color: #c0392b;
+  }
