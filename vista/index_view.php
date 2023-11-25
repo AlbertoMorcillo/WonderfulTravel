@@ -10,7 +10,7 @@
 <!-- partial -->
 		<form method="post" action="../controlador/index.php">
 
-		Data <input type="date" id="datahora" name="datahora" ><br>
+		<br>Data <input type="date" id="datahora" name="datahora" ><br>
 		Desti 		
 		<select class="form-control" id="choice1" name="choice1">
 			<option value="defecto" selected>Sel·lecciona un continent</option>
@@ -38,7 +38,7 @@
 			 <option data-option="AMÈRICA"    value="Brasil">Brasil</option>
 			 <option data-option="AMÈRICA"   value="Argentina">Argentina</option>
 		   </select><br>
-		   <img id="countryImage" src="" alt="Imagen del país">
+		   <img id="countryImage" src="" alt="" style="float: right; margin-right: 20px;">
 
 		Nom <input type="text" id="nom" name="nom" value="<?php if(isset($_POST['nom']) && !(empty($errors))) { echo($_POST['nom']);} ?>" ><br>
 		Apellidos <input type="text" id="cognoms" name="cognoms" value="<?php if(isset($_POST['cognoms']) && !(empty($errors))) { echo($_POST['cognoms']);} ?>"><br>
@@ -60,6 +60,12 @@
 		<?php if (isset($errors) && !empty($errors)) : ?>
         <div class="error-message">
             <?php echo $errors ?>
+        </div>
+		<?php endif; ?>
+		<span class="viatges">
+		<?php if (isset($viatges) && !empty($viatges)) : ?>
+        <div class="viatges-message">
+            <?php echo $viatges ?>
         </div>
         <?php endif; ?>
 	</span> 
