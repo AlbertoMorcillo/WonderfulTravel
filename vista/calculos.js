@@ -61,7 +61,7 @@ let precioTotal = 0;
         break;
       case "Sierra Leona":
         precioTotal = SIERRA_LEONA_PRECIO;
-        document.getElementById('countryImage').src = '../assets/images/africa/SierraLeona2.webp';
+        document.getElementById('countryImage').src = '../assets/images/africa/sierraleona2.webp';
 
         break;
       case "Marruecos":

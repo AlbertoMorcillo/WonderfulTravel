@@ -67,30 +67,50 @@ $validApellido = isset($_POST['cognoms']) ? htmlspecialchars($_POST['cognoms']) 
 $validEmail = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '';
 $validTelf = isset($_POST['telefon']) ? htmlspecialchars($_POST['telefon']) : '';
 $validGenero = isset($_POST['genere']) ? htmlspecialchars($_POST['genere']) : '';
-$validPersonas = isset($_POST['persones']) && $_POST['persones'] !== '' ? intval($_POST['persones']) : 1;
+$validPersonas = isset($_POST['persones']) ? htmlspecialchars($_POST['persones']) : 1;
 $validDescuento = isset($_POST['descompte']) ? "SI" : "NO";
 
 // Mostrar precio al poner el validChoice2 = $preu
 // Comparar data esrita a la de hoy para sacar las noches que se quedan
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['delete-article'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete-article'])) {
 	$connexio = new PDO('mysql:host=localhost;dbname=wonderfull_travel', 'root', '');
-
-    $uniqidToDelete = $_GET['delete-article'];
-
-    // Eliminar la reserva de la base de datos
-    $statement = $connexio->prepare("DELETE FROM viatges WHERE uniqid = ?");
-    $statement->bindParam(1, $uniqidToDelete);
-    $statement->execute();
-
-    // Eliminar la reserva de la sesión
-    foreach ($_SESSION['viajes'] as $index => $viaje) {
+	$uniqidToDelete = $_POST['delete-article'];
+	    // Eliminar la reserva de la base de datos
+		$statement = $connexio->prepare("DELETE FROM viatges WHERE uniqid = ?");
+		$statement->bindParam(1, $uniqidToDelete);
+		$statement->execute();
+		echo "eliminado";
+	foreach ($_SESSION['viajes'] as $index => $viaje) {
         if ($viaje['uniqid'] === $uniqidToDelete) {
             unset($_SESSION['viajes'][$index]);
             $_SESSION['viajes'] = array_values($_SESSION['viajes']);
             echo "Eliminación exitosa";
-            break;  // Salir del bucle una vez que se encuentra y elimina la entrada
-        }
+		        }
     }
+
+
+
+
+    // Eliminar la reserva de la sesión
+
+	
+		// Mostrar la información de viajes anteriores almacenada en la sesión
+		$totalViajes = count($_SESSION['viajes']);
+		$inicio = $totalViajes > 3 ? $totalViajes - 3 : 0;
+		for ($i = $inicio; $i < $totalViajes; $i++) {
+		$viaje = $_SESSION['viajes'][$i];
+		$viatges.= "<strong>"."Destino: "."</strong>" . $viaje['Destino'] . "<br>";
+		$viatges.= "<strong>"."Precio total: "."</strong>" . $viaje['Precio total'] . " €" . "<br>";
+		$viatges.= "<img src='../assets/images/" . $viaje['Imagen'] . "' alt='' style='float: right; width: 100px;'>"; 
+		$viatges.= "<strong>"."Número de personas: "."</strong>" . $viaje['Número de personas'] . "<br>";
+		$viatges.= "<strong>"."Fecha: "."</strong>" . $viaje['Fecha'] . "<br>";
+		$viatges.= "<strong>"."País: "."</strong>" . $viaje['País'] . "<br>";
+		$viatges.= "<strong>"."Descompte: "."</strong>" . $viaje['Descompte'] . "<br>";
+		$viatges.= '<form method="POST" action="./index.php">';
+		$viatges.= '<button class="btn-delete-comment custom" type="submit" name="delete-article" value="' . $viaje['uniqid'] . '">Borrar reserva</button>';
+		$viatges.= '</form>';
+		$viatges.= "<br>";
+}
 }
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
@@ -169,7 +189,7 @@ if (empty($errors)){
 							'Fecha' => $dataViatge,
 							'País' => $validChoice2,
 							'Descompte' => $validDescuento,
-							'Imagen' => strtolower($validChoice1) . '/' . strtolower($validChoice2) . '2.webp' 
+							'Imagen' => strtolower($validChoice1) . '/' . strtolower(str_replace(" ","",$validChoice2)) . '2.webp' 
 						);
 			// Mostrar la información de viajes anteriores almacenada en la sesión
 			$totalViajes = count($_SESSION['viajes']);
@@ -183,13 +203,11 @@ if (empty($errors)){
 			$viatges.= "<strong>"."Fecha: "."</strong>" . $viaje['Fecha'] . "<br>";
 			$viatges.= "<strong>"."País: "."</strong>" . $viaje['País'] . "<br>";
 			$viatges.= "<strong>"."Descompte: "."</strong>" . $viaje['Descompte'] . "<br>";
-			$viatges.= '<form method="get" action="./index.php">';
+			$viatges.= '<form method="post" action="./index.php">';
 			$viatges.= '<button class="btn-delete-comment custom" type="submit" name="delete-article" value="' . $viaje['uniqid'] . '">Borrar reserva</button>';
 			$viatges.= '</form>';
 			$viatges.= "<br>";
 }
-
-// Manejo de eliminación después de enviar el formulario
 
 
 		}
