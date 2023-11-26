@@ -10,7 +10,7 @@
 <!-- partial -->
 		<form method="POST" action="../controlador/index.php">
 
-		<br>Data <input type="date" id="datahora" name="datahora" ><br>
+		<br>Data <input type="date" id="datahora" name="datahora" ><br><br>
 		Desti 		
 		<select class="form-control" id="choice1" name="choice1">
 			<option value="defecto" selected>Sel·lecciona un continent</option>
@@ -37,26 +37,26 @@
 			<option data-option="AMERICA"   value="Mexico">México</option>
 			<option data-option="AMERICA"    value="Brasil">Brasil</option>
 			<option data-option="AMERICA"   value="Argentina">Argentina</option>
-		</select><br>
+		</select><br><br>
 
-		Nom <input type="text" id="nom" name="nom" value="<?php if(isset($_POST['nom']) && !(empty($errors))) { echo($_POST['nom']);} ?>" ><br>
+		Nom <input type="text" id="nom" name="nom" value="<?php if(isset($_POST['nom']) && !(empty($errors))) { echo($_POST['nom']);} ?>" ><br><br>
 		<img id="countryImage" src="" alt="" style="float: right; margin-right: 20px;">
 
-		Apellidos <input type="text" id="cognoms" name="cognoms" value="<?php if(isset($_POST['cognoms']) && !(empty($errors))) { echo($_POST['cognoms']);} ?>"><br>
+		Apellidos <input type="text" id="cognoms" name="cognoms" value="<?php if(isset($_POST['cognoms']) && !(empty($errors))) { echo($_POST['cognoms']);} ?>"><br><br>
 
-		Email <input type="text" id="email" name="email" value="<?php if(isset($_POST['email']) && !(empty($errors))) { echo($_POST['email']);} ?>"><br>
+		Email <input type="text" id="email" name="email" value="<?php if(isset($_POST['email']) && !(empty($errors))) { echo($_POST['email']);} ?>"><br><br>
 
-		Preu <input type="text" id="preu" name="preu" readonly ><br>
+		Preu <input type="text" id="preu" name="preu" readonly ><br><br>
 
 		Genere <br><input type="radio" id="genere" name="genere" value="masculi">
 		<label for="masculi">Masculí</label><br>
 		<input type="radio" id="genere" name="genere" value="femeni">
 		<label for="femeni">Femení</label><br>
 		<input type="radio" id="genere" name="genere" value="privat">
-		<label for="privat">Privat</label><br>
+		<label for="privat">Privat</label><br><br>
 
-		Telèfon <input type="text" id="telefon" name="telefon" value="<?php if(isset($_POST['telefon']) && !(empty($errors))) { echo($_POST['telefon']);} ?>"><br>
-		Persones <input type="number" id="persones" name="persones" min="1" max="100" value="<?php if(isset($_POST['persones']) && !(empty($errors))) { echo($_POST['persones']);} ?>"><br>
+		Telèfon <input type="text" id="telefon" name="telefon" value="<?php if(isset($_POST['telefon']) && !(empty($errors))) { echo($_POST['telefon']);} ?>"><br><br>
+		Persones <input type="number" id="persones" name="persones" min="1" max="100" value="<?php if(isset($_POST['persones']) && !(empty($errors))) { echo($_POST['persones']);} ?>"><br><br>
 		Descompte <input type="checkbox" id="descompte" name="descompte" value="<?php if(isset($_POST['descompte']) && !(empty($errors))) { echo($_POST['descompte']);} ?>"><br>
 		<span class="error">
 		<?php if (isset($errors) && !empty($errors)) : ?>

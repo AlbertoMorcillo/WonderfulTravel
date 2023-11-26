@@ -53,12 +53,11 @@ if (!isset($_SESSION['viajes'])) {
 $errors = '';
 $viatges = '';
 $valor = "1";
-//echo $valor;
+
  if (isset($_POST["datahora"])) {
      $valor = $_POST["datahora"];
  }
-//$valor = isset($_POST['datahora']) ? $_POST['datahora'] : (new DateTime())->format('Y-m-d');
-//echo $valor;
+
 $validChoice1 = isset($_POST['choice1']) ? htmlspecialchars($_POST['choice1']) : '';
 $validChoice2 = isset($_POST['choice2']) ? htmlspecialchars($_POST['choice2']) : '';
 $validNombre = isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : '';
@@ -158,7 +157,6 @@ if (empty($errors)){
 				$preu = $preu - (($preu * 10) / 100);
 			}
 			$uniqid = uniqid();
-			echo $uniqid;
 			$statement = $connexio->prepare("INSERT INTO viatges (destí, preu_total, num_persones, data, pais, uniqid) VALUES (?,?,?,?,?,?)");
 			
 			$statement->bindParam(1, $validChoice1);
@@ -197,9 +195,7 @@ if (empty($errors)){
 			$viatges.= '<button class="btn-delete-comment custom" type="submit" name="delete-article" value="' . $viaje['uniqid'] . '">Borrar reserva</button>';
 			$viatges.= '</form>';
 			$viatges.= "<br>";
-}
-
-
+			}
 		}
 			catch(PDOException $e) {
 			// Manejar errores de conexión
