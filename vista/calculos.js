@@ -40,12 +40,12 @@ let precioTotal = 0;
         precioTotal = LUXEMBURGO_PRECIO;
         document.getElementById('countryImage').src = '../assets/images/europa/luxemburgo2.webp';
         break;
-      case "Afganistán":
+      case "Afganistan":
         precioTotal = AFGANISTAN_PRECIO;
         document.getElementById('countryImage').src = '../assets/images/asia/afganistan2.webp';
 
         break;
-      case "Japón":
+      case "Japon":
         precioTotal = JAPON_PRECIO;
         document.getElementById('countryImage').src = '../assets/images/asia/japon2.webp';
         break;
@@ -69,7 +69,7 @@ let precioTotal = 0;
         document.getElementById('countryImage').src = '../assets/images/africa/marruecos2.webp';
 
         break;
-      case "México":
+      case "Mexico":
         precioTotal = MEXICO_PRECIO;
         document.getElementById('countryImage').src = '../assets/images/america/mexico2.webp';
 

@@ -67,7 +67,7 @@ $validApellido = isset($_POST['cognoms']) ? htmlspecialchars($_POST['cognoms']) 
 $validEmail = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '';
 $validTelf = isset($_POST['telefon']) ? htmlspecialchars($_POST['telefon']) : '';
 $validGenero = isset($_POST['genere']) ? htmlspecialchars($_POST['genere']) : '';
-$validPersonas = isset($_POST['persones']) ? htmlspecialchars($_POST['persones']) : 1;
+$validPersonas = isset($_POST['persones']) && $_POST['persones'] !== '' ? intval($_POST['persones']) : 1;
 $validDescuento = isset($_POST['descompte']) ? "SI" : "NO";
 
 // Mostrar precio al poner el validChoice2 = $preu
