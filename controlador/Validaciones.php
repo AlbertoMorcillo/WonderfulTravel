@@ -52,12 +52,21 @@ function validadNumPersonas($validPersonas, &$errors){
     } 
 }
 
-function validarData($fechaDelViaje, $fechaActual, &$errors) {   
-    // $fechaDelViaje = new DateTime($fechaDelViaje);
-    $diferencia = $fechaActual->diff($fechaDelViaje);
-    $data = $diferencia->format("%R%a");
+function validarData($dataViatge, $fechaActual, &$errors) {   
+    $fechaDelViaje = "";
+    $fechaDelViaje2 = -1;
+    $fechaDelViaje2 = strlen($dataViatge);
 
-    if ($data < 0) {
-        $errors .= 'La fecha del viaje no puede ser anterior a la fecha actual.<br>';
+    if ($fechaDelViaje2 == 0){
+        $errors .= 'La fecha del viaje no puede estar vacia.<br>';
+    } else{
+        $fechaDelViaje = new DateTime($dataViatge);
+        $diferencia = $fechaActual->diff($fechaDelViaje);
+        $data = $diferencia->format("%R%a");
+
+        if ($data < 0) {
+            $errors .= 'La fecha del viaje no puede ser anterior a la fecha actual.<br>';
+        }
     }
+
 }

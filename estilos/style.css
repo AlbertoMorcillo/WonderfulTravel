@@ -1,127 +1,63 @@
-.error-message {
-    color: #ff5555;
-    margin-bottom: 10px;
-}
-
-.success-message{
-    color: #2d0ec4;
-    margin-bottom: 10px;
-}
-.clock {
-    margin: 0px auto;
-    width: 100px;
-    height: 100px;
-    fill: black;
-    
-}
-.btn-delete-comment.custom {
-  background-color: #ff0000;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.btn-delete-comment.custom:hover {
-  background-color: #cc0000;
-}
-
-.btn-delete-comment.custom:active {
-  background-color: #990000;
-}
-.outer-circle,
-.center-circle {
-    fill: DarkSlateGray;
-}
-
-.hours,
-.minutes,
-.seconds {
-    transform-origin: center;
-    stroke-linecap: round;
-}
-
-.hours {
-    stroke: fuchsia;
-    stroke-width: 3px;
-    transition: transform 1s ease-in-out;
-}
-
-.minutes {
-    stroke-width: 2px;
-    stroke: lime;
-    transition: transform 1s ease-in-out;
-}
-
-.seconds {
-    stroke: white;
-}
-
-.line {
-    stroke-width: 1px;
-    stroke: white;
-    stroke-linecap: round;
-    transform-origin: center;
-}
-
+/* Estilos generales */
 body {
-    font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0f0f0; /* Color de fondo de la página */
 }
 
-div.datahora {
-    font-size: 1.2em;
-    font-weight: bold;
-    color: white;
-    text-align: center;
-    border-radius: 0.9em;
-    background-image: linear-gradient(#cebe27, #45ab76);
-    width: 9em;
-    padding: 0.4em 0;
+/* Estilos para el formulario */
+form {
+  background-color: #fff; /* Fondo del formulario */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 80%; /* Ancho del formulario */
+  max-width: 600px; /* Ancho máximo del formulario */
 }
 
-iframe {
-    border: 1px solid black;
-    width: 1000px;
-    height: 500px;
+/* Estilos para la sección de reservas */
+.viatges-message {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #dff0d8; /* Color de fondo de la sección de reservas */
+  border: 1px solid #3c763d; /* Borde de la sección de reservas */
+  border-radius: 4px;
 }
-  .viatges-message {
-    border: 1px solid #ccc;
-    padding: 15px;
-    margin: 20px 0;
-    border-radius: 8px;
-  }
 
-  .viaje-item {
-    margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-  }
+/* Estilos para mensajes de error */
+.error-message {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f2dede; /* Color de fondo de los mensajes de error */
+  border: 1px solid #a94442; /* Borde de los mensajes de error */
+  border-radius: 4px;
+  color: #a94442; /* Color del texto de los mensajes de error */
+}
 
-  .viaje-item h4 {
-    color: #3498db;
-  }
+/* Estilos para imágenes */
+img {
+  max-width: 40%; /* Ajustar imágenes al contenedor padre */
+  height: auto;
+  float: down; /* Alinear la imagen a la derecha */
+  margin-left: 20px; /* Agregar un margen derecho para separar el texto */}
 
-  .viaje-item p {
-    margin: 5px 0;
-  }
+.clock {margin: 0px auto;width: 100px;height: 100px;fill: black;}.btn-delete-comment.custom {background-color: #ff0000;border: none;color: white;padding: 10px 20px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;border-radius: 5px;}.btn-delete-comment.custom:hover {background-color: #cc0000;}.btn-delete-comment.custom:active {background-color: #990000;}.outer-circle,.center-circle {fill: DarkSlateGray;}.hours,.minutes,.seconds {transform-origin: center;stroke-linecap: round;}.hours {stroke: fuchsia;stroke-width: 3px;transition: transform 1s ease-in-out;}.minutes {stroke-width: 2px;stroke: lime;transition: transform 1s ease-in-out;}.seconds {stroke: white;}.line {stroke-width: 1px;stroke: white;stroke-linecap: round;transform-origin: center;}
+/* Estilos para las reservas anteriores */
+.btn-delete-comment {
+  background-color: #d9534f;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
 
-  .viaje-item button {
-    background-color: #e74c3c;
-    color: #fff;
-    border: none;
-    padding: 8px 12px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-
-  .viaje-item button:hover {
-    background-color: #c0392b;
-  }
+.btn-delete-comment:hover {
+  background-color: #c9302c;
+}

@@ -8,7 +8,7 @@
 	</head>
 	<body>
 <!-- partial -->
-		<form method="post" action="../controlador/index.php">
+		<form method="POST" action="../controlador/index.php">
 
 		<br>Data <input type="date" id="datahora" name="datahora" ><br>
 		Desti 		
@@ -38,12 +38,14 @@
 			<option data-option="AMERICA"    value="Brasil">Brasil</option>
 			<option data-option="AMERICA"   value="Argentina">Argentina</option>
 		</select><br>
-		<img id="countryImage" src="" alt="" style="float: right; margin-right: 20px;">
 
 		Nom <input type="text" id="nom" name="nom" value="<?php if(isset($_POST['nom']) && !(empty($errors))) { echo($_POST['nom']);} ?>" ><br>
+		<img id="countryImage" src="" alt="" style="float: right; margin-right: 20px;">
+
 		Apellidos <input type="text" id="cognoms" name="cognoms" value="<?php if(isset($_POST['cognoms']) && !(empty($errors))) { echo($_POST['cognoms']);} ?>"><br>
+
 		Email <input type="text" id="email" name="email" value="<?php if(isset($_POST['email']) && !(empty($errors))) { echo($_POST['email']);} ?>"><br>
-		
+
 		Preu <input type="text" id="preu" name="preu" readonly ><br>
 
 		Genere <br><input type="radio" id="genere" name="genere" value="masculi">
@@ -62,16 +64,18 @@
             <?php echo $errors ?>
         </div>
 		<?php endif; ?>
-		<span class="viatges">
+
+	</span> 
+		<br>
+	<button type="submit" name="submit" value="Enviar">Enviar</button>
+	<span class="viatges">
 		<?php if (isset($viatges) && !empty($viatges)) : ?>
-        <div class="viatges-message">
+        <br>
+			<div class="viatges-message">
             <?php echo $viatges ?>
         </div>
         <?php endif; ?>
-	</span> 
-		
-	<button type="submit" name="submit" value="Enviar">Enviar</button>
-
+		</span> 
 
 	</form>	
 	</body>

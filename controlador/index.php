@@ -52,16 +52,15 @@ if (!isset($_SESSION['viajes'])) {
 
 $errors = '';
 $viatges = '';
-$valor = '';
-// if (isset($_POST["datahora"])) {
-//     $valor = $_POST["datahora"];
-// } else {
-//     $valor = (new DateTime())->format('Y-m-d');
-// 	echo $valor;
-// }
-$valor = isset($_POST['datahora']) ? $_POST['datahora'] : (new DateTime())->format('Y-m-d');
+$valor = "1";
+//echo $valor;
+ if (isset($_POST["datahora"])) {
+     $valor = $_POST["datahora"];
+ }
+//$valor = isset($_POST['datahora']) ? $_POST['datahora'] : (new DateTime())->format('Y-m-d');
+//echo $valor;
 $validChoice1 = isset($_POST['choice1']) ? htmlspecialchars($_POST['choice1']) : '';
-$validChoice2 = isset($_POST['choice2']) ? htmlspecialchars($_POST['choice2']) : 'asajnsanskj';
+$validChoice2 = isset($_POST['choice2']) ? htmlspecialchars($_POST['choice2']) : '';
 $validNombre = isset($_POST['nom']) ? htmlspecialchars($_POST['nom']) : '';
 $validApellido = isset($_POST['cognoms']) ? htmlspecialchars($_POST['cognoms']) : '';
 $validEmail = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '';
@@ -79,20 +78,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete-article'])) {
 		$statement = $connexio->prepare("DELETE FROM viatges WHERE uniqid = ?");
 		$statement->bindParam(1, $uniqidToDelete);
 		$statement->execute();
-		echo "eliminado";
 	foreach ($_SESSION['viajes'] as $index => $viaje) {
         if ($viaje['uniqid'] === $uniqidToDelete) {
             unset($_SESSION['viajes'][$index]);
             $_SESSION['viajes'] = array_values($_SESSION['viajes']);
-            echo "Eliminación exitosa";
 		        }
     }
-
-
-
-
-    // Eliminar la reserva de la sesión
-
 	
 		// Mostrar la información de viajes anteriores almacenada en la sesión
 		$totalViajes = count($_SESSION['viajes']);
@@ -112,15 +103,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete-article'])) {
 		$viatges.= "<br>";
 }
 }
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
 require 'Validaciones.php';
 
 $dataViatge = $valor;
-$fechaDelViaje = new DateTime($dataViatge);
 $fechaActual = new DateTime();
-
-validarData($fechaDelViaje, $fechaActual, $errors);
+validarData($dataViatge, $fechaActual, $errors);
 validarNombreOk($validNombre, $errors);
 validarApellidoOk($validApellido, $errors);
 validarEmailOk($validEmail, $errors);
