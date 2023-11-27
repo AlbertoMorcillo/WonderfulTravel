@@ -7,7 +7,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
   background-color: #f0f0f0; /* Color de fondo de la página */
 }
 
@@ -98,7 +97,12 @@ img {
     background-color: #990000;
   }
   
-  .outer-circle,.center-circle {fill: DarkSlateGray;}.hours,.minutes,.seconds {transform-origin: center;stroke-linecap: round;}.hours {stroke: fuchsia;stroke-width: 3px;transition: transform 1s ease-in-out;}.minutes {stroke-width: 2px;stroke: lime;transition: transform 1s ease-in-out;}
+  .outer-circle,.center-circle {fill: DarkSlateGray;}
+  .hours,
+  .minutes,
+  .seconds {transform-origin: center;stroke-linecap: round;}
+  .hours {stroke: fuchsia;stroke-width: 3px;transition: transform 1s ease-in-out;}
+  .minutes {stroke-width: 2px;stroke: lime;transition: transform 1s ease-in-out;}
   .seconds {stroke: white;}
   .line {stroke-width: 1px;stroke: white;stroke-linecap: round;transform-origin: center;}
 /* Estilos para las reservas anteriores */
