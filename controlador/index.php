@@ -212,12 +212,12 @@ if (empty($errors)){
 		// Canviar les opcions del SMTP
 		$mail->SMTPDebug =0;
 		$mail->SMTPOptions = array(
-		  'ssl' => array(
-			  'verify_peer' => false,
-			  'verify_peer_name' => false,
-			  'allow_self_signed' => true
-		  )
-	  );                      
+		'ssl' => array(
+			'verify_peer' => false,
+			'verify_peer_name' => false,
+			'allow_self_signed' => true
+		)
+	);                      
 		$mail->isSMTP();                                            //Enviar utilitzant SMTP
 		$mail->Host       = 'smtp.gmail.com';                    
 		$mail->SMTPAuth   = true;                                   //Activem l'autenticació SMTP
@@ -225,22 +225,20 @@ if (empty($errors)){
 		$mail->Password   = 'jvrg fwih oxgm ncwm';                          //Clau d'acces
 		$mail->SMTPSecure = 'PHPMailer::ENCRYPTION_STARTTLS';            //Enable implicit TLS encryption
 		$mail->Port       = 587;                                    // Utilitzem el port 587
-	  
 		//Recipients
 		$mail->setFrom('xamppbmartinez@gmail.com', $nom); 
 		$mail->addAddress($adreca);     
-	  
 		//Content
 		$mail->isHTML(true); //Enviar l'email en format HTML
 		$mail->Subject = 'Reserva feta'; // Assumpte
 		$mail->Body    = "Hola ".$nom . " ". $validApellido . "<br>" . 
 		" Et recordem que la teva reserva per el vol a " . $validChoice2. " ja ha sigut validat <br>" . 
-		 "<strong>"."Destinació: "."</strong>" . $viaje['Destino'] . "<br>" .
-		 "<strong>"."Preu total: "."</strong>" . $viaje['Precio total'] . " €" . "<br>".
-		 "<strong>"."Número de persones: "."</strong>" . $viaje['Número de personas'] . "<br>".
-		 "<strong>"."Data: "."</strong>" . $viaje['Fecha'] . "<br>".
-		 "<strong>"."País: "."</strong>" . $viaje['País'] . "<br>";
-	  
+		"<strong>"."Destinació: "."</strong>" . $viaje['Destino'] . "<br>" .
+		"<strong>"."Preu total: "."</strong>" . $viaje['Precio total'] . " €" . "<br>".
+		"<strong>"."Número de persones: "."</strong>" . $viaje['Número de personas'] . "<br>".
+		"<strong>"."Data: "."</strong>" . $viaje['Fecha'] . "<br>".
+		"<strong>"."País: "."</strong>" . $viaje['País'] . "<br>";
+
 		$mail->send(); // Enviem l'email
 		
 		}
