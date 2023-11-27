@@ -95,11 +95,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete-article'])) {
 		$inicio = $totalViajes > 3 ? $totalViajes - 3 : 0;
 		for ($i = $inicio; $i < $totalViajes; $i++) {
 		$viaje = $_SESSION['viajes'][$i];
-		$viatges.= "<strong>"."Destino: "."</strong>" . $viaje['Destino'] . "<br>";
-		$viatges.= "<strong>"."Precio total: "."</strong>" . $viaje['Precio total'] . " €" . "<br>";
+		$viatges.= "<strong>"."Destinació: "."</strong>" . $viaje['Destino'] . "<br>";
+		$viatges.= "<strong>"."Preu total: "."</strong>" . $viaje['Precio total'] . " €" . "<br>";
 		$viatges.= "<img src='../assets/images/" . $viaje['Imagen'] . "' alt='' style='float: right; width: 100px;'>"; 
-		$viatges.= "<strong>"."Número de personas: "."</strong>" . $viaje['Número de personas'] . "<br>";
-		$viatges.= "<strong>"."Fecha: "."</strong>" . $viaje['Fecha'] . "<br>";
+		$viatges.= "<strong>"."Nombre de persones: "."</strong>" . $viaje['Número de personas'] . "<br>";
+		$viatges.= "<strong>"."Data: "."</strong>" . $viaje['Fecha'] . "<br>";
 		$viatges.= "<strong>"."País: "."</strong>" . $viaje['País'] . "<br>";
 		$viatges.= "<strong>"."Descompte: "."</strong>" . $viaje['Descompte'] . "<br>";
 		$viatges.= '<form method="POST" action="./index.php">';
@@ -138,35 +138,6 @@ if (empty($errors)){
 		$statement->bindParam(6,$uniqid);
 		$statement->execute();
 
-		$mail = new PHPMailer(true);
-		$nom = $validNombre; $adreca = $validEmail;
-		// Canviar les opcions del SMTP
-		$mail->SMTPDebug =0;
-		$mail->SMTPOptions = array(
-		  'ssl' => array(
-			  'verify_peer' => false,
-			  'verify_peer_name' => false,
-			  'allow_self_signed' => true
-		  )
-	  );                      
-		$mail->isSMTP();                                            //Enviar utilitzant SMTP
-		$mail->Host       = 'smtp.gmail.com';                    
-		$mail->SMTPAuth   = true;                                   //Activem l'autenticació SMTP
-		$mail->Username   = 'xamppbmartinez@gmail.com';                     //Email on creem la clau
-		$mail->Password   = 'jvrg fwih oxgm ncwm';                          //Clau d'acces
-		$mail->SMTPSecure = 'PHPMailer::ENCRYPTION_STARTTLS';            //Enable implicit TLS encryption
-		$mail->Port       = 587;                                    // Utilitzem el port 587
-	  
-		//Recipients
-		$mail->setFrom('xamppbmartinez@gmail.com', $nom); 
-		$mail->addAddress($adreca);     
-	  
-		//Content
-		$mail->isHTML(true); //Enviar l'email en format HTML
-		$mail->Subject = 'Reserves feta'; // Assumpte
-		$mail->Body    = "Hola Alberto te hablo desde la pàgina web ";  
-	  
-		$mail->send(); // Enviem l'email
 		
 		// Establecer el modo de errores para PDO
 		$connexio->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -223,11 +194,11 @@ if (empty($errors)){
 			$inicio = $totalViajes > 3 ? $totalViajes - 3 : 0;
 			for ($i = $inicio; $i < $totalViajes; $i++) {
 			$viaje = $_SESSION['viajes'][$i];
-			$viatges.= "<strong>"."Destino: "."</strong>" . $viaje['Destino'] . "<br>";
-			$viatges.= "<strong>"."Precio total: "."</strong>" . $viaje['Precio total'] . " €" . "<br>";
+			$viatges.= "<strong>"."Destinació: "."</strong>" . $viaje['Destino'] . "<br>";
+			$viatges.= "<strong>"."Preu total: "."</strong>" . $viaje['Precio total'] . " €" . "<br>";
 			$viatges.= "<img src='../assets/images/" . $viaje['Imagen'] . "' alt='' style='float: right; width: 100px;'>"; 
-			$viatges.= "<strong>"."Número de personas: "."</strong>" . $viaje['Número de personas'] . "<br>";
-			$viatges.= "<strong>"."Fecha: "."</strong>" . $viaje['Fecha'] . "<br>";
+			$viatges.= "<strong>"."Número de persones: "."</strong>" . $viaje['Número de personas'] . "<br>";
+			$viatges.= "<strong>"."Data: "."</strong>" . $viaje['Fecha'] . "<br>";
 			$viatges.= "<strong>"."País: "."</strong>" . $viaje['País'] . "<br>";
 			$viatges.= "<strong>"."Descompte: "."</strong>" . $viaje['Descompte'] . "<br>";
 			$viatges.= '<form method="post" action="./index.php">';
@@ -264,10 +235,10 @@ if (empty($errors)){
 		$mail->Subject = 'Reserva feta'; // Assumpte
 		$mail->Body    = "Hola ".$nom . " ". $validApellido . "<br>" . 
 		" Et recordem que la teva reserva per el vol a " . $validChoice2. " ja ha sigut validat <br>" . 
-		 "<strong>"."Destino: "."</strong>" . $viaje['Destino'] . "<br>" .
-		 "<strong>"."Precio total: "."</strong>" . $viaje['Precio total'] . " €" . "<br>".
-		 "<strong>"."Número de personas: "."</strong>" . $viaje['Número de personas'] . "<br>".
-		 "<strong>"."Fecha: "."</strong>" . $viaje['Fecha'] . "<br>".
+		 "<strong>"."Destinació: "."</strong>" . $viaje['Destino'] . "<br>" .
+		 "<strong>"."Preu total: "."</strong>" . $viaje['Precio total'] . " €" . "<br>".
+		 "<strong>"."Número de persones: "."</strong>" . $viaje['Número de personas'] . "<br>".
+		 "<strong>"."Data: "."</strong>" . $viaje['Fecha'] . "<br>".
 		 "<strong>"."País: "."</strong>" . $viaje['País'] . "<br>";
 	  
 		$mail->send(); // Enviem l'email
@@ -275,7 +246,7 @@ if (empty($errors)){
 		}
 			catch(PDOException $e) {
 			// Manejar errores de conexión
-			echo "Error de conexión a la base de datos: " . $e->getMessage();
+			echo "Error de conexió a la base de dades: " . $e->getMessage();
 			die();
 			}
 		}

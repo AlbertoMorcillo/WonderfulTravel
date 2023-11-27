@@ -11,7 +11,7 @@
 		<form method="POST" action="../controlador/index.php">
 
 		<br>Data <input type="date" id="datahora" name="datahora" ><br><br>
-		Desti 		
+		Destí 		
 		<select class="form-control" id="choice1" name="choice1">
 			<option value="defecto" selected>Sel·lecciona un continent</option>
 			<option value="ASIA">ASIA</option>
@@ -26,7 +26,7 @@
 			<option data-option="ASIA"    value="Japon">Japón</option>
 			<option data-option="ASIA"    value="Yemen">Yemen</option>
 			<option data-option="EUROPA" 	value="defecto"selected>Sel·lecciona un país</option>
-			<option data-option="EUROPA"   value="España">España</option>
+			<option data-option="EUROPA"   value="España">Espanya</option>
 			<option data-option="EUROPA"   value="Portugal">Portugal</option>
 			<option data-option="EUROPA"    value="Luxemburgo">Luxemburgo</option>
 			<option data-option="AFRICA" 	value="defecto"selected>Sel·lecciona un país</option>
@@ -42,7 +42,7 @@
 		Nom <input type="text" id="nom" name="nom" value="<?php if(isset($_POST['nom']) && !(empty($errors))) { echo($_POST['nom']);} ?>" ><br><br>
 		<img id="countryImage" src="" alt="" style="float: right; margin-right: 20px;">
 
-		Apellido <input type="text" id="cognoms" name="cognoms" value="<?php if(isset($_POST['cognoms']) && !(empty($errors))) { echo($_POST['cognoms']);} ?>"><br><br>
+		Cognom <input type="text" id="cognoms" name="cognoms" value="<?php if(isset($_POST['cognoms']) && !(empty($errors))) { echo($_POST['cognoms']);} ?>"><br><br>
 
 		Email <input type="text" id="email" name="email" value="<?php if(isset($_POST['email']) && !(empty($errors))) { echo($_POST['email']);} ?>"><br><br>
 
