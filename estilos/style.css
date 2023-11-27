@@ -47,7 +47,38 @@ img {
   float: down; /* Alinear la imagen a la derecha */
   margin-left: 20px; /* Agregar un margen derecho para separar el texto */}
 
-.clock {margin: 0px auto;width: 100px;height: 100px;fill: black;}.btn-delete-comment.custom {background-color: #ff0000;border: none;color: white;padding: 10px 20px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;border-radius: 5px;}.btn-delete-comment.custom:hover {background-color: #cc0000;}.btn-delete-comment.custom:active {background-color: #990000;}.outer-circle,.center-circle {fill: DarkSlateGray;}.hours,.minutes,.seconds {transform-origin: center;stroke-linecap: round;}.hours {stroke: fuchsia;stroke-width: 3px;transition: transform 1s ease-in-out;}.minutes {stroke-width: 2px;stroke: lime;transition: transform 1s ease-in-out;}.seconds {stroke: white;}.line {stroke-width: 1px;stroke: white;stroke-linecap: round;transform-origin: center;}
+  .clock {
+    margin: 0px auto;
+    width: 100px;
+    height: 100px;
+    fill: black;
+  }
+
+  .btn-delete-comment.custom { 
+    background-color: #ff0000; 
+    border: none; 
+    color: white; 
+    padding: 10px 20px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px; 
+    margin: 4px 2px; 
+    cursor: pointer; 
+    border-radius: 5px; 
+    -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; }
+
+  .btn-delete-comment.custom:hover {
+    background-color: #cc0000;
+  }
+
+  .btn-delete-comment.custom:active {
+    background-color: #990000;
+  }
+  
+  .outer-circle,.center-circle {fill: DarkSlateGray;}.hours,.minutes,.seconds {transform-origin: center;stroke-linecap: round;}.hours {stroke: fuchsia;stroke-width: 3px;transition: transform 1s ease-in-out;}.minutes {stroke-width: 2px;stroke: lime;transition: transform 1s ease-in-out;}
+  .seconds {stroke: white;}
+  .line {stroke-width: 1px;stroke: white;stroke-linecap: round;transform-origin: center;}
 /* Estilos para las reservas anteriores */
 
 

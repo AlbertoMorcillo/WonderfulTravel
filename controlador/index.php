@@ -161,7 +161,7 @@ if (empty($errors)){
 	  
 		//Content
 		$mail->isHTML(true); //Enviar l'email en format HTML
-		$mail->Subject = 'Reserves fetes'; // Assumpte
+		$mail->Subject = 'Reserves feta'; // Assumpte
 		$mail->Body    = "Hola Alberto te hablo desde la pàgina web ";  
 	  
 		$mail->send(); // Enviem l'email
