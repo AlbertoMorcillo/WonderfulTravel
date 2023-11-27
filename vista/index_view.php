@@ -67,7 +67,7 @@
 
 	</span> 
 		<br>
-	<button type="submit" name="submit" value="Enviar">Enviar</button>
+	<button type="submit" name="submit" value="Enviar" class="btn-send-comment custom">Enviar</button>
 	<span class="viatges">
 		<?php if (isset($viatges) && !empty($viatges)) : ?>
         <br>
