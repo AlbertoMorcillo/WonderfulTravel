@@ -128,12 +128,14 @@ if (empty($errors)){
 	try {
 		// Establecer la conexión a la base de datos
 		$connexio = new PDO('mysql:host=localhost;dbname=wonderfull_travel', 'root', '');
-		$statement = $connexio->prepare("INSERT INTO usuarios (nombre, apellido, telefono, email, genero) VALUES (?,?,?,?,?)");
+		$uniqid = uniqid();
+		$statement = $connexio->prepare("INSERT INTO usuarios (nombre, apellido, telefono, email, genero, uniqid) VALUES (?,?,?,?,?,?)");
 		$statement->bindParam(1,$validNombre);
 		$statement->bindParam(2,$validApellido);
 		$statement->bindParam(3,$validTelf);
 		$statement->bindParam(4,$validEmail);
 		$statement->bindParam(5,$validGenero);
+		$statement->bindParam(6,$uniqid);
 		$statement->execute();
 
 		$mail = new PHPMailer(true);
@@ -193,7 +195,7 @@ if (empty($errors)){
 			if ($validDescuento == "SI"){
 				$preu = $preu - (($preu * 10) / 100);
 			}
-			$uniqid = uniqid();
+
 			$statement = $connexio->prepare("INSERT INTO viatges (destí, preu_total, num_persones, data, pais, uniqid) VALUES (?,?,?,?,?,?)");
 			
 			$statement->bindParam(1, $validChoice1);
@@ -215,6 +217,7 @@ if (empty($errors)){
 							'Descompte' => $validDescuento,
 							'Imagen' => strtolower($validChoice1) . '/' . strtolower(str_replace(" ","",$validChoice2)) . '2.webp' 
 						);
+
 			// Mostrar la información de viajes anteriores almacenada en la sesión
 			$totalViajes = count($_SESSION['viajes']);
 			$inicio = $totalViajes > 3 ? $totalViajes - 3 : 0;
